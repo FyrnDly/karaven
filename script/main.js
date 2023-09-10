@@ -47,5 +47,5 @@ window.addEventListener('load', function () {
     var nav = document.querySelector('nav');
     var navSizeHeight = nav.offsetHeight;
     var body = document.querySelector('body');
-    body.style.paddingBottom = navSizeHeight + 'px';
+    body.style.paddingTop = navSizeHeight + 'px';
 });
