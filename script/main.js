@@ -1,32 +1,29 @@
 // function untuk menukar form dari header ke nav
 function moveForm() {
     // Manggil element
-    var header = document.querySelector("#headerForm"); 
-    var form = document.querySelector("form.search");
-    var navbar = document.querySelector("#togglerNavbar");
-    var navbarItems = document.querySelector("ul.navbar-nav");
+    var headerForm = document.querySelector("#headerForm"); 
+    var formSearch = document.querySelector("form.search");
+    var navForm = document.querySelector("#navItems");
     // ukur tinggi header
-    var headerHeight = header.offsetHeight;
+    var headerHeight = headerForm.offsetHeight;
     // ukur posisi scroll user
     var scrollPosition = window.pageYOffset;
     if (scrollPosition > headerHeight) {
-        // ubah class form header untuk navbar
-        form.classList.remove('col-md-8','col-lg-6');
-        form.classList.add('d-flex');
-        // ubah posisi navbar-nav items dari pojok kanan ke kiri
-        navbarItems.classList.remove('ms-auto');
-        navbarItems.classList.add('me-auto');
+        // Ubah class untuk lebar form header untuk navbar
+        formSearch.classList.remove('col-md-8', 'col-lg-6');
+        // Ubah class untuk posisi logo dan form di navbar
+        navForm.classList.remove('justify-content-around');
+        navForm.classList.add('justify-content-between');
         // pindahin form ke navbar
-        navbar.appendChild(form);
+        navForm.appendChild(formSearch);
     } else {
-        // ubah class form header untuk navbar
-        form.classList.remove('d-flex');
-        form.classList.add('col-md-8', 'col-lg-6');
-        // ubah posisi navbar-nav items dari pojok kiri ke kanan
-        navbarItems.classList.add('ms-auto');
-        navbarItems.classList.remove('me-auto');
+        // ubah class untuk lebar form navbar untuk header
+        formSearch.classList.add('col-md-8', 'col-lg-6');
+        // Ubah class untuk posisi logo di navbar
+        navForm.classList.remove('justify-content-between');
+        navForm.classList.add('justify-content-around');
         // pindahin form ke header kembali
-        header.appendChild(form);
+        headerForm.appendChild(formSearch);
     }
 }
 // Menjalankan fungsi moveForm saat window di-scroll
