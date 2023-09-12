@@ -169,6 +169,7 @@ h1{
 // Style
 body{
     background-color: $natural20;
+    overflow-x: hidden;
 }
 
 // Navbar
@@ -254,6 +255,7 @@ footer{
     background-color: $primary100;
     box-shadow: 2px 4px 8px 0px rgba($color: $primary100, $alpha: 0.30);
     border-radius: 10px;
+    border: none;
     &.card-lagu{
         flex-direction: row;
         padding: 10px 15px;
@@ -272,6 +274,16 @@ footer{
                     text-decoration: underline;
                 }
             }
+        }
+    }
+    &.card-genre{
+        height: 400px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        h4{
+            margin-top: auto;
+            margin-bottom: 50px;
         }
     }
     h4{
