@@ -286,6 +286,16 @@ footer{
             margin-bottom: 50px;
         }
     }
+    &.card-artist{
+        gap: 10px;
+        padding: 50px 15px 25px;
+        border-radius: 150px 150px 10px 10px;
+        img{
+            border-radius: 100%;
+            width: 150px;
+            height: 150px;
+        }
+    }
     h4{
         color: $natural100;
     }
