@@ -108,14 +108,14 @@ h1{
         background-color: $primary100;
         color: $natural100;
         border: none;
-        i{
+        i,p{
             color: $natural100;
         }
         &:hover{
             background-color: $primary25;
             color: $natural80;
             border: none;
-            i{
+            i,p{
                 color: $natural80;
             }
         }
@@ -124,7 +124,7 @@ h1{
         background-color: $natural10;
         color: $natural100;
         border: none;
-        i{
+        i,p{
             color: $natural100;
         }
         &.no-fill{
@@ -137,7 +137,7 @@ h1{
         &:hover{
             background-color: $natural30;
             color: $natural70;
-            i{
+            i,p{
                 color: $natural70;
             }
         }
@@ -146,7 +146,7 @@ h1{
         background-color: $natural100;
         color: $natural10;
         border: none;
-        i{
+        i,p{
             color: $natural10;
         }
         &.no-fill{
@@ -159,7 +159,7 @@ h1{
         &:hover{
             background-color: $natural70;
             color: $natural30;
-            i{
+            i,p{
                 color: $natural30;
             }
         }
@@ -261,6 +261,8 @@ footer{
         padding: 10px 15px;
         img{
             border-radius: 5px;
+            height: 75px;
+            width: 75px;
             box-shadow: 2px 4px 8px 0px rgba($color: $natural10, $alpha: 0.25);
         }
         .text{

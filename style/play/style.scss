@@ -1,0 +1,89 @@
+// Coloring
+$natural100: #F7F7F7;
+$natural90: #E1E1E1;
+$natural80: #D5D5D5;
+$natural70: #B4B4B4;
+$natural60: #929292;
+$natural50: #7C7C7C;
+$natural40: #5A5A5A;
+$natural30: #383838;
+$natural20: #161616;
+$natural10: #0B0B0B;
+$primary100: #DD004E;
+$primary50: #FF3E82;
+$primary25: #FF9FC1;
+
+// Local Font
+@font-face {
+    font-family: 'Montserrat';
+    src: url(../../assets/font/Montserrat-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(../../assets/font/Roboto-Regular.ttf) format('truetype');
+}
+
+// Banner
+header{
+    background-color: $primary25;
+    height: fit-content;
+    width: 100vw;
+    padding: 25px 0px;
+}
+
+// Main Landing Page
+main{
+    .play-music{
+        display: flex;
+        flex-direction: column;
+        iframe{
+            border-radius: 15px 15px 0 0;
+            background-color: $natural30;
+            padding: 25px 0;
+        }
+        .d-flex{
+            gap: 25px;
+            padding: 10px 25px;
+            border-radius: 0 0 15px 15px;
+            background-color: $natural80;
+        }
+    }
+    .queue{
+        width: 100%;
+        background-color: $primary25;
+        border-radius: 15px;
+        .queue-list{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100%;
+            .navside{
+                border-bottom: 2px solid $primary100;
+                .btn{
+                    box-shadow: none;
+                    border-radius: 0 15px 0 0;
+                    justify-content: center;
+                    &:nth-child(odd){
+                        border-radius: 15px 0 0;
+                    }
+                    &.btn-primary:hover{
+                        color: $natural10;
+                    }
+                }
+            }
+            .queue-items{
+                gap: 10px;
+                padding: 15px 10px;
+                overflow-y: auto;
+                flex-direction: column;
+                .card-lagu{
+                    width: 100%;
+                    background-color: $primary50;
+                    &.active{
+                        background-color: $primary100;
+                    }
+                }
+            }
+        }
+    }
+}
