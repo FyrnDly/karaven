@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Music;
+use App\Models\Artist;
+use App\Models\Genre;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 
-class AppController extends Controller
-{
+class AppController extends Controller{
     public function index(){
+        $musics = Music::orderByRaw('ISNULL(log), log DESC')->get();
         return view('pages.index',[
-            'isHome'=>true
+            'isHome'=>true,
+            'musics' => $musics
         ]);
     }
 
     public function genre(){
+        $genres = Genre::orderBy('name','desc')->get();
         return view('pages.genre.index',[
-            'isGenre'=>true
+            'isGenre'=>true,
+            'genres'=>$genres
         ]);
     }
 
@@ -25,8 +32,10 @@ class AppController extends Controller
     }
 
     public function artist(){
+        $artists = Artist::orderBy('name','desc')->get();
         return view('pages.artist.index',[
-            'isArtist'=>true
+            'isArtist'=>true,
+            'artists'=>$artists
         ]);
     }
 }

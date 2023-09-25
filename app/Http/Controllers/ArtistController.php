@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
-class ArtistController extends Controller
-{
+class ArtistController extends Controller{
     /**
      * Display a listing of the resource.
      */
@@ -16,19 +17,35 @@ class ArtistController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * From buat artist 
      */
-    public function create()
-    {
-        //
+    public function create(){
+        return view('pages.admin.artist.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Tambahkan Artist
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $tgl = date('Y-m-d');
+        $request->validate([
+            'title' => ['required'],
+            'thumbnail' => ['image'] 
+        ]);
+
+        $artist = new Artist;
+        $artist->name = $request->input('title');
+        $artist->save();
+
+        $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
+        if ($request->file('thumbnail')!=null) {
+            $thumbnail = $artist->slug.$tgl.'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            $path = $request->file('thumbnail')->move(public_path('artist'), $thumbnail);
+            $artist->thumbnail = '/artist/'.$thumbnail;
+        }
+
+        $artist->save();
+        return redirect()->route('home');
     }
 
     /**

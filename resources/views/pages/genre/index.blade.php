@@ -15,36 +15,16 @@
     @include('include.navbar.navside')
 
     <div class="row justify-content-center align-items-start">
+        @foreach ($genres as $genre)
+
         <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/jpop.jpg);">
-                <h4>JPOP</h4>
+            <a href="#" class="card card-genre" style="background-image: url({{ $genre->thumbnail != null ? $genre->thumbnail : url('user/assets/image/genre.jpg') }});">
+                <h4>{{ $genre->name }}</h4>
+
             </a>
         </div>
-        <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/kpop.jpg);">
-                <h4>KPOP</h4>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/dangdut.jpg);">
-                <h4>Dangdut</h4>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/pop-indonesia.jpg);">
-                <h4>POP Indonesia</h4>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/galau.jpg);">
-                <h4>Galau</h4>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 p-4">
-            <a href="#" class="card card-genre" style="background-image: url(assets/image/2000s.jpg);">
-                <h4>2000s</h4>
-            </a>
-        </div>
+        @endforeach
+
     </div>
 </main>
 @endsection

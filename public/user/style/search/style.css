@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Montserrat";
-  src: url(../../assets/font/Montserrat-Regular.ttf) format("truetype");
+  src: url(/user/assets/font/Montserrat-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
-  src: url(../../assets/font/Roboto-Regular.ttf) format("truetype");
+  src: url(/user/assets/font/Roboto-Regular.ttf) format("truetype");
 }
 header {
   background-color: #FF9FC1;

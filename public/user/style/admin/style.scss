@@ -1,0 +1,60 @@
+// Coloring
+$natural100: #F7F7F7;
+$natural90: #E1E1E1;
+$natural80: #D5D5D5;
+$natural70: #B4B4B4;
+$natural60: #929292;
+$natural50: #7C7C7C;
+$natural40: #5A5A5A;
+$natural30: #383838;
+$natural20: #161616;
+$natural10: #0B0B0B;
+$primary100: #DD004E;
+$primary50: #FF3E82;
+$primary25: #FF9FC1;
+
+// Local Font
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/user/assets/font/Montserrat-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(/user/assets/font/Roboto-Regular.ttf) format('truetype');
+}
+
+
+
+header{
+    height: 25vh;
+    @media screen and (max-width:480px) {
+        height: 65vh;
+    }
+}
+
+form.music{
+    padding-top: 25px;
+    label{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: $primary50;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+        font-size: 1.6rem;
+        letter-spacing: 0.3px;
+    }
+    input, select, option, textarea{
+        margin-top: 5px;
+        background-color: $natural30 !important;
+        border: $natural50;
+        color: $natural80 !important;
+        &::placeholder,&:disabled{
+            color: $natural50 !important;
+        }
+    }
+}
+
+small{
+    color: $primary100;
+}

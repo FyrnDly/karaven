@@ -10,6 +10,6 @@ class Artist extends Model
     use HasFactory;
 
     public function music(){
-        return $this->hasMany(Music::class, 'id_artist');
+        return $this->hasMany(Music::class, 'artist_id');
     }
 }

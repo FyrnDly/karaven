@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(/user/assets/font/Montserrat-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(/user/assets/font/Roboto-Regular.ttf) format("truetype");
+}
+header {
+  height: 25vh;
+}
+@media screen and (max-width: 480px) {
+  header {
+    height: 65vh;
+  }
+}
+
+form.music {
+  padding-top: 25px;
+}
+form.music label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #FF3E82;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.3px;
+}
+form.music input, form.music select, form.music option, form.music textarea {
+  margin-top: 5px;
+  background-color: #383838 !important;
+  border: #7C7C7C;
+  color: #D5D5D5 !important;
+}
+form.music input::-moz-placeholder, form.music select::-moz-placeholder, form.music option::-moz-placeholder, form.music textarea::-moz-placeholder {
+  color: #7C7C7C !important;
+}
+form.music input::placeholder, form.music input:disabled, form.music select::placeholder, form.music select:disabled, form.music option::placeholder, form.music option:disabled, form.music textarea::placeholder, form.music textarea:disabled {
+  color: #7C7C7C !important;
+}
+
+small {
+  color: #DD004E;
+}/*# sourceMappingURL=style.css.map */
