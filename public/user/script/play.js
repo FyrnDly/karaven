@@ -12,16 +12,6 @@ function frameHeight() {
     // Set height queue music
 };
 // Membuat function untuk tinggi queue music sama dengan tinggi play music
-function queueHeight() {
-    // Get element queue music
-    var queueMusic = document.querySelector('.queue');
-    // Get element frame video
-    var frameMusic = document.querySelector('.play-music');
-    // Get height element frame Video
-    var getHeight = frameMusic.offsetHeight;
-    // Set height to queue
-    queueMusic.style.height = getHeight + 'px';
-}
 // Jalankan function
 window.addEventListener('load', frameHeight());
-window.addEventListener('load', queueHeight());
+// window.addEventListener('load', queueHeight());

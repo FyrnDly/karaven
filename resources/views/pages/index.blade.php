@@ -20,12 +20,14 @@
 
         <div class="col-md-6 p-2">
             <div class="card card-lagu">
-                <a href="#">
+                <a href="{{ route('music',$music->slug) }}">
+
                     <img src="{{ $music->thumbnail!=null ? $music->thumbnail : url('user/assets/image/music.jpg') }}" alt="Gambar Lagu">
 
                 </a>
                 <div class="text w-100">
-                    <a href="play.html" class="w-100">
+                    <a href="{{ route('music',$music->slug) }}" class="w-100">
+
                         <h4>{{ $music->title }}</h4>
 
                     </a>
@@ -37,7 +39,7 @@
             </div>
         </div>
         @endforeach
-        </div>
+    </div>
 
 {{-- <h2>Lagu Baru <b>Ditambahkan</b></h2> --}}
 

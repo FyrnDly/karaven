@@ -9,14 +9,21 @@ use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Embed;
 
 class MusicController extends Controller{
     /**
-     * Display a listing of the resource.
+     * Tampilan Putar Music
      */
-    public function index()
-    {
-        //
+    public function index($slug){
+        $music = Music::where('slug', $slug)->first();
+        $embed = Embed::make($music->source_music)->parseUrl();
+        if ($embed) {
+            $music->source_music = $embed->getIframe();
+        }
+        return view('pages.play',[
+            'music'=>$music
+        ]);
     }
 
     /**
