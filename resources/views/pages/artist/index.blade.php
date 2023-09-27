@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 {{-- title --}}
-@section('title','Genre')
+@section('title','Penyanyi')
 
 {{-- add style landing page --}}
 @push('add-style')

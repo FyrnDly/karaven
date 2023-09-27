@@ -41,5 +41,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::prefix('music')->name('music.')->group(function(){
         Route::get('/create',[MusicController::class,'create'])->name('create');
         Route::post('/store',[MusicController::class,'store'])->name('store');
+        Route::get('/show', [MusicController::class,'show'])->name('show');
+        Route::get('/edit/{slug}',[MusicController::class,'edit'])->name('edit');
+        Route::post('/update/{slug}',[MusicController::class,'update'])->name('update');
+        Route::post('/delete/{id}',[MusicController::class,'destroy'])->name('delete');
     });
 });

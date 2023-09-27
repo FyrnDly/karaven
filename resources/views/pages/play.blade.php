@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 {{-- title --}}
-@section('title','Beranda')
+@section('title','Memutar Music')
 
 {{-- add style landing page --}}
 @push('add-style')

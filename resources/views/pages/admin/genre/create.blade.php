@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Add Genre')
+@section('title', 'Tambah Genre')
 
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/admin/style.css') }}">

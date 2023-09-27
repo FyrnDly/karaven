@@ -8,7 +8,7 @@ use App\Models\Genre;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;;
 use Embed;
 
 class MusicController extends Controller{
@@ -17,6 +17,8 @@ class MusicController extends Controller{
      */
     public function index($slug){
         $music = Music::where('slug', $slug)->first();
+        $music->log += 1;
+        $music->save();
         $embed = Embed::make($music->source_music)->parseUrl();
         if ($embed) {
             $music->source_music = $embed->getIframe();
@@ -30,8 +32,8 @@ class MusicController extends Controller{
      * From tambah music
      */
     public function create(){
-        $genres = Genre::get();
-        $artists = Artist::get();
+        $genres = Genre::orderBy('name','desc')->get();
+        $artists = Artist::orderBy('name','desc')->get();
 
         return view('pages.admin.music.create',[
             'genres'=>$genres,
@@ -61,44 +63,83 @@ class MusicController extends Controller{
 
         $music->slug = Str::slug($music->title,'-').'-'.$music->id.$tgl;
         if ($request->file('thumbnail')!=null) {
-            $thumbnail = $music->slug.$tgl.'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            $thumbnail = $music->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
             $path = $request->file('thumbnail')->move(public_path('music'), $thumbnail);
             $music->thumbnail = '/music/'.$thumbnail;
         }
 
         $music->save();
-        return redirect()->route('home');
+        return redirect()->route('admin.music.show');
     }
 
     /**
-     * Display the specified resource.
+     * Detail Music
      */
-    public function show(Music $music)
+    public function show()
     {
-        //
+        $music = Music::orderBy('log','desc')->orderBy('title','desc')->get();
+        return view('pages.admin.music.show',[
+            'musics'=>$music
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Music $music)
-    {
-        //
+    public function edit($slug){
+        $music = Music::where('slug',$slug)->first();
+        $genre = Genre::orderBy('name','desc')->get();
+        $artist = Artist::orderBy('name','desc')->get();
+        return view('pages.admin.music.edit',[
+            'music'=>$music,
+            'genres'=>$genre,
+            'artists'=>$artist
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Music $music)
-    {
-        //
+    public function update(Request $request,$slug){
+        $tgl = date('Y-m-d');
+        $request->validate([
+            'title' => ['required'],
+            'source' => ['required'],
+            'artist' => ['required'],
+            'genre' => ['required'],
+            'thumbnail' => ['image'] 
+        ]);
+        
+        $music = Music::where('slug',$slug)->first();
+        $music->title = $request->input('title');
+        $music->genre_id = $request->input('genre');
+        $music->artist_id = $request->input('artist');
+        $music->source_music = $request->input('source');
+        $music->slug = Str::slug($music->title,'-').'-'.$music->id.$tgl;
+        
+        if ($request->file('thumbnail')!=null) {
+            $thumbnail = $music->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            $path = $request->file('thumbnail')->move(public_path('music'), $thumbnail);
+            $music->thumbnail = '/music/'.$thumbnail;
+        }
+        $music->save();
+
+        return redirect()->route('admin.music.show');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Music $music)
-    {
-        //
+    public function destroy($id){
+        $music = Music::where('id',$id)->first();
+        // Cek jika data musik ditemukan
+        if($music) {
+            $image_path = public_path().$music->thumbnail; 
+            if ($image_path!=null) {
+                File::delete($image_path);
+            }
+            $music->delete();
+        }
+        return redirect()->route('admin.music.show');
     }
 }

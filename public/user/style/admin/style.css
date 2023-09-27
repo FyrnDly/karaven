@@ -43,4 +43,8 @@ form.music input::placeholder, form.music input:disabled, form.music select::pla
 
 small {
   color: #DD004E;
+}
+
+table {
+  margin: 25px 0px;
 }/*# sourceMappingURL=style.css.map */
