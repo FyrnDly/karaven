@@ -19,7 +19,8 @@
 
         <div class="col-md-4 col-lg-3 px-2 py-3">
             <a href="#" class="card card-artist">
-                <img src="{{ $artist->thumbnail!=null ? $artist->thumbnail : url('user/assets/icon/artist.svg')}}" alt="Gambar Takane no Nadeshiko">
+                <img src="{{ $artist->thumbnail!=null ? $artist->thumbnail : url('user/assets/icon/artist.svg')}}" alt="{{ $artist->name }}">
+
                 <h4>{{ $artist->name }}</h4>
 
             </a>
