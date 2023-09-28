@@ -13,7 +13,6 @@
 <main class="container">
     <!-- content card music -->
     @include('include.navbar.navside')
-
     <div class="row justify-content-center align-items-start">
         <div class="col-lg-3 col-md-4 p-4">
             <a href="#" class="card card-genre" style="background-image: url(assets/image/indonesia2000.jpg);">
@@ -43,4 +42,3 @@
     </div>
 </main>
 @endsection
-

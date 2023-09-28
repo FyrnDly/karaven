@@ -8,7 +8,7 @@ use App\Models\Genre;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;;
+use Illuminate\Support\Facades\File;
 use Embed;
 
 class MusicController extends Controller{
@@ -84,7 +84,7 @@ class MusicController extends Controller{
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Tampilan form edit Music
      */
     public function edit($slug){
         $music = Music::where('slug',$slug)->first();
@@ -98,7 +98,7 @@ class MusicController extends Controller{
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data music
      */
     public function update(Request $request,$slug){
         $tgl = date('Y-m-d');
@@ -128,11 +128,10 @@ class MusicController extends Controller{
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Hapus Data Music
      */
     public function destroy($id){
         $music = Music::where('id',$id)->first();
-        // Cek jika data musik ditemukan
         if($music) {
             $image_path = public_path().$music->thumbnail; 
             if ($image_path!=null) {

@@ -20,13 +20,18 @@ Route::prefix('playlist')->name('playlist.')->group(function(){
 
 Route::prefix('artist')->name('artist.')->group(function(){
     Route::get('/list', [AppController::class, 'artist'])->name('index');
+    Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::prefix('artist')->name('artist.')->group(function(){
+        Route::get('/', [ArtistController::class,'show'])->name('show');
         Route::get('/create',[ArtistController::class,'create'])->name('create');
         Route::post('/store',[ArtistController::class,'store'])->name('store');
+        Route::get('/edit/{slug}',[ArtistController::class,'edit'])->name('edit');
+        Route::post('/update/{slug}',[ArtistController::class,'update'])->name('update');
+        Route::post('/delete/{id}',[ArtistController::class,'destroy'])->name('delete');
     });
     
     Route::prefix('genre')->name('genre.')->group(function(){

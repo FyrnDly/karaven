@@ -32,4 +32,3 @@
 @push('add-script')
 <script src="{{ url('user/script/play.js') }}"></script>
 @endpush
-
