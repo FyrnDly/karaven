@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
-class Music extends Model
-{
+class Music extends Model{
     use HasFactory;
+    use Searchable;
 
     protected $table = 'music';
     protected $fillable = ['genre_id','artist_id','title'];

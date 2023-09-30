@@ -27,8 +27,9 @@
                         <h4>{{ $music->title }}</h4>
                     </a>
                     <p>
-                        <a href="#"><b>{{ $music->artist->name}}</b></a> |
-                        <a href="#">{{ $music->genre->name}}</a>
+                        <a href="{{ route('artist.detail', $music->artist->slug) }}"><b>{{ $music->artist->name}}</b></a> |
+                        <a href="{{ route('genre.detail', $music->genre->slug) }}">{{ $music->genre->name}}</a>
+
                 </div>
             </div>
         </div>

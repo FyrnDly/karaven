@@ -1,20 +1,31 @@
 @extends('layout.app')
 
 {{-- title --}}
-@section('title','Daftar Lagu '.$genre->name)
+@section('title','Hasil Pencarian "'.$key.'"')
 
 {{-- add style landing page --}}
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/landing-page/style.css') }}">
 @endpush
+@push('add-style')
+<style>
+    header {
+        height: 25vh;
+    }
+    @media screen and (max-width: 480px) {
+        header {
+            height: 65vh;
+        }
+    }
+</style>
+@endpush
 
 {{-- Content --}}
 @section('content')
 <main class="container">
-    <!-- content card music -->
-    <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
+    @if (count($musics)!=0 or count($musics)!=null)
+    <h2>Hasil Pencarian Untuk <b>"{{ $key }}"</b></h2>
     <div class="row justify-content-center">
-        @if (count($musics)!=0 or count($musics)!=null)
         @foreach ($musics as $music)
         <div class="col-md-6 p-2">
             <div class="card card-lagu">
@@ -32,16 +43,16 @@
             </div>
         </div>
         @endforeach
-        @else
-        <div class="d-flex flex-column justify-content-center gap-2 my-4 mx-2">
-            <img src="{{ url('user/assets/icon/error.svg') }}" alt="Error" class="w-50 mx-auto">
-            <span class="text-center">
-                <h2><b>Lagu Belum Ditambahkan</b> oleh Admin</h2>
-                <b>Silahkan Hubungi Admin</b>
-            </span>
-        </div>
-        @endif
     </div>
+    @else
+    <div class="d-flex flex-column justify-content-center gap-2 my-4 mx-2">
+        <span class="text-center">
+            <h2>Hasil Pencarian <b>"{{ $key }}"</b> Tidak Ditemukan</h2>
+            <b>Silahkan Hubungi Admin Untuk Menambahkan "{{ $key }}"</b>
+        </span>
+        <img src="{{ url('user/assets/icon/error.svg') }}" alt="Error" class="w-50 w-md-10 mx-auto">
+    </div>
+    @endif
 </main>
 @endsection
 

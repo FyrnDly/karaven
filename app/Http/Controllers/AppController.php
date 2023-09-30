@@ -38,4 +38,14 @@ class AppController extends Controller{
             'artists'=>$artists
         ]);
     }
+
+    public function search(Request $request){
+        $key = $request->input('key');
+        $musics = Music::search($key)->orderBy('ISNULL(log), log DESC')->get();
+        
+        return view('pages.search',[
+            'key'=>$key,
+            'musics'=>$musics
+        ]);
+    }
 }

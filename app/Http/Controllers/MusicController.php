@@ -45,7 +45,7 @@ class MusicController extends Controller{
      * Tambahkan Music Baru
      */
     public function store(Request $request){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'source' => ['required'],
@@ -77,7 +77,7 @@ class MusicController extends Controller{
      */
     public function show()
     {
-        $music = Music::orderBy('log','desc')->orderBy('title','asc')->get();
+        $music = Music::orderByRaw('ISNULL(log), log DESC')->orderBy('title','asc')->get();
         return view('pages.admin.music.show',[
             'musics'=>$music
         ]);
@@ -101,7 +101,7 @@ class MusicController extends Controller{
      * Update data music
      */
     public function update(Request $request,$slug){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'source' => ['required'],

@@ -8,7 +8,8 @@ use App\Http\Controllers\MusicController;
 use App\Http\Controllers\PlaylistController;
 
 Route::get('/', [AppController::class, 'index'])->name('home');
-Route::get('/{slug}', [MusicController::class,'index'])->name('music');
+Route::get('/music/{slug}', [MusicController::class,'index'])->name('music');
+Route::post('/search',[AppController::class,'search'])->name('search');
 
 Route::prefix('genre')->name('genre.')->group(function(){
     Route::get('/show', [AppController::class, 'genre'])->name('index');

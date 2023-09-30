@@ -32,7 +32,7 @@ class ArtistController extends Controller{
      * Tambahkan Artist
      */
     public function store(Request $request){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'thumbnail' => ['image'] 
@@ -77,7 +77,7 @@ class ArtistController extends Controller{
      * Update data penyanyi
      */
     public function update(Request $request, $slug){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'thumbnail' => ['image'] 

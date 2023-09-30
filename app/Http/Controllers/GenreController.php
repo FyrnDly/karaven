@@ -32,7 +32,7 @@ class GenreController extends Controller{
      * Tambahkan Genre Baru
      */
     public function store(Request $request){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'thumbnail' => ['image'] 
@@ -77,7 +77,7 @@ class GenreController extends Controller{
      * Update the specified resource in storage.
      */
     public function update(Request $request, $slug){
-        $tgl = date('Y-m-d');
+        $tgl = date('mYd');
         $request->validate([
             'title' => ['required'],
             'thumbnail' => ['image'] 
