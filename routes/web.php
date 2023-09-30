@@ -11,15 +11,16 @@ Route::get('/', [AppController::class, 'index'])->name('home');
 Route::get('/{slug}', [MusicController::class,'index'])->name('music');
 
 Route::prefix('genre')->name('genre.')->group(function(){
-    Route::get('/list', [AppController::class, 'genre'])->name('index');
+    Route::get('/show', [AppController::class, 'genre'])->name('index');
+    Route::get('/{slug}',[GenreController::class,'index'])->name('detail');
 });
 
-Route::prefix('playlist')->name('playlist.')->group(function(){
-    Route::get('/list', [AppController::class, 'playlist'])->name('index');
-});
+// Route::prefix('playlist')->name('playlist.')->group(function(){
+//     Route::get('/show', [AppController::class, 'playlist'])->name('index');
+// });
 
 Route::prefix('artist')->name('artist.')->group(function(){
-    Route::get('/list', [AppController::class, 'artist'])->name('index');
+    Route::get('/show', [AppController::class, 'artist'])->name('index');
     Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
 
@@ -35,13 +36,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
     });
     
     Route::prefix('genre')->name('genre.')->group(function(){
+        Route::get('/', [GenreController::class,'show'])->name('show');
         Route::get('/create',[GenreController::class,'create'])->name('create');
         Route::post('/store',[GenreController::class,'store'])->name('store');
+        Route::get('/edit/{slug}',[GenreController::class,'edit'])->name('edit');
+        Route::post('/update/{slug}',[GenreController::class,'update'])->name('update');
+        Route::post('/delete/{id}',[GenreController::class,'destroy'])->name('delete');
     });
     
-    Route::prefix('playist')->group(function(){
-        Route::get('/',[PlaylistController::class,'create'])->name('playlist');
-    });
+    // Route::prefix('playist')->group(function(){
+    //     Route::get('/',[PlaylistController::class,'create'])->name('playlist');
+    // });
     
     Route::prefix('music')->name('music.')->group(function(){
         Route::get('/', [MusicController::class,'show'])->name('show');

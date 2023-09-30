@@ -18,7 +18,7 @@ class AppController extends Controller{
     }
 
     public function genre(){
-        $genres = Genre::orderBy('name','desc')->get();
+        $genres = Genre::orderBy('name','asc')->get();
         return view('pages.genre.index',[
             'isGenre'=>true,
             'genres'=>$genres
@@ -32,7 +32,7 @@ class AppController extends Controller{
     }
 
     public function artist(){
-        $artists = Artist::orderBy('name','desc')->get();
+        $artists = Artist::orderBy('name','asc')->get();
         return view('pages.artist.index',[
             'isArtist'=>true,
             'artists'=>$artists

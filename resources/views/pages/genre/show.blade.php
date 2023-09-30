@@ -1,17 +1,18 @@
 @extends('layout.app')
 
 {{-- title --}}
-@section('title','Daftar Lagu '.$artist->name)
+@section('title','Daftar Lagu '.$genre->name)
 
 {{-- add style landing page --}}
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/landing-page/style.css') }}">
 @endpush
+
 {{-- Content --}}
 @section('content')
 <main class="container">
     <!-- content card music -->
-    <h2>Daftar Lagu <b>{{ $artist->name }}</b></h2>
+    <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
     <div class="row justify-content-center">
         @if (count($musics)!=0 or count($musics)!=null)
         @foreach ($musics as $music)
@@ -25,7 +26,7 @@
                         <h4>{{ $music->title }}</h4>
                     </a>
                     <p>
-                        <a href="#"><b>{{ $music->artist->name}}</b></a> |
+                        <a href="#"><b>{{ $music->genre->name}}</b></a> |
                         <a href="#">{{ $music->genre->name}}</a>
                 </div>
             </div>
@@ -43,3 +44,4 @@
     </div>
 </main>
 @endsection
+

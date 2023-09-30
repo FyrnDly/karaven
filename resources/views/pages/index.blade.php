@@ -13,6 +13,7 @@
 <main class="container">
     <!-- content card music -->
     @include('include.navbar.navside')
+    @if (count($musics)!=0 or count($musics)!=null)
     <h2>Lagu Paling <b>Sering Diputar</b></h2>
     <div class="row justify-content-center">
         @foreach ($musics as $music)
@@ -33,11 +34,18 @@
         </div>
         @endforeach
     </div>
-    
-{{-- <h2>Lagu Baru <b>Ditambahkan</b></h2> --}}
-
+    @else
+    <div class="d-flex flex-column justify-content-center gap-2 my-4 mx-2">
+        <img src="{{ url('user/assets/icon/error.svg') }}" alt="Error" class="w-50 mx-auto">
+        <span class="text-center">
+            <h2><b>Lagu Belum Ditambahkan</b> oleh Admin</h2>
+            <b>Silahkan Hubungi Admin</b>
+        </span>
+    </div>
+    @endif
+    {{-- <h2>Lagu Baru <b>Ditambahkan</b></h2>
     <div class="d-flex">
         <a href="#" class="mx-auto btn btn-white">Tampilkan Lagu Lainnya</a>
-    </div>
+    </div> --}}
 </main>
 @endsection

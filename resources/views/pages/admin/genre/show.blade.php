@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Daftar Lagu-Admin')
+@section('title', 'Daftar Gnere-Admin')
 
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/admin/style.css') }}">
@@ -7,28 +7,30 @@
 
 @section('content')
 <main class="container">
-    <a href="{{ route('admin.music.create') }}" class="btn btn-primary mt-4">Tambah Lagu Baru</a>
+    <a href="{{ route('admin.genre.create') }}" class="btn btn-primary mt-4">Tambah Genre Baru</a>
     <table class="table table-striped table-dark table-hover table-borderless ">
         <thead>
             <tr class="text-center">
-                <th scope="col">Judul Lagu</th>
-                <th scope="col">Penyanyi</th>
                 <th scope="col">Genre</th>
+                <th scope="col">Gambar</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            @if (count($musics)!=0)
-            @foreach ($musics as $music)
+            @if (count($genres)!=0)
+            @foreach ($genres as $genre)
             <tr>
-                <td>{{ $music->title }}</td>
-                <td>{{ $music->artist->name }}</td>
-                <td>{{ $music->genre->name }}</td>
-                <td class="d-flex gap-4">
-                    <a href="{{ route('admin.music.edit',$music->slug) }}" class="btn btn-primary">
+                <td>{{ $genre->name }}</td>
+                <td class="text-center">
+                    @if($genre->thumbnail)
+                    <img src="{{ $genre->thumbnail }}" alt="{{ $genre->name }}" width="50px" height="40px">
+                    @endif
+                </td>
+                <td class="text-center">
+                    <a href="{{ route('admin.genre.edit',$genre->slug) }}" class="btn btn-primary d-inline-block m-2">
                         <i class="bi bi-pencil"></i>
                     </a>
-                    <form action="{{ route('admin.music.delete',$music->id) }}" method="post">
+                    <form action="{{ route('admin.genre.delete',$genre->id) }}" method="post" class="d-inline-block m-2">
                         @csrf
                         <button type="submit" class="btn btn-black outline">
                             <i class="bi bi-trash2"></i>
@@ -40,7 +42,7 @@
             @else
             <tr>
                 <td colspan="4" class="text-center">
-                    <a href="{{ route('admin.music.create') }}" class="btn btn-primary">Tambahkan Lagu Baru</a>
+                    <a href="{{ route('admin.genre.create') }}" class="btn btn-primary">Tambahkan Genre Baru</a>
                 </td>
             </tr>
             @endif

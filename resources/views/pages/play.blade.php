@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 {{-- title --}}
-@section('title','Memutar Music')
+@section('title','Memutar '.$music->title.'-'.$music->artist->name)
 
 {{-- add style landing page --}}
 @push('add-style')

@@ -57,7 +57,7 @@ class ArtistController extends Controller{
      * Detail Penyanyi
      */
     public function show(){
-        $artist = Artist::orderBy('name','desc')->get();
+        $artist = Artist::orderBy('name','asc')->get();
         return view('pages.admin.artist.show',[
             'artists'=>$artist
         ]);

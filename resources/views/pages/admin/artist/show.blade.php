@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Daftar Lagu-Admin')
+@section('title', 'Daftar Pennyanyi-Admin')
 
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/admin/style.css') }}">
@@ -11,18 +11,19 @@
     <table class="table table-striped table-dark table-hover table-borderless ">
         <thead>
             <tr class="text-center">
-                <th scope="col">Judul Lagu</th>
-                <th scope="col">Penyanyi</th>
+                <th scope="col">Nama Penyanyi</th>
+                <th scope="col">Gambar</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
+            @if (count($artists)!=0)
             @foreach ($artists as $artist)
             <tr>
                 <td>{{ $artist->name }}</td>
                 <td class="text-center">
                     @if($artist->thumbnail)
-                    <img src="{{ $artist->thumbnail }}" alt="{{ $artist->name }}" width="100px" height="100px">
+                    <img src="{{ $artist->thumbnail }}" alt="{{ $artist->name }}" width="50px" height="50px">
                     @endif
                 </td>
                 <td class="text-center">
@@ -38,6 +39,13 @@
                 </td>
             </tr>
             @endforeach
+            @else
+            <tr>
+                <td colspan="4" class="text-center">
+                    <a href="{{ route('admin.artist.create') }}" class="btn btn-primary">Tambahkan Penyanyi Baru</a>
+                </td>
+            </tr>
+            @endif
         </tbody>
     </table>
 </main>

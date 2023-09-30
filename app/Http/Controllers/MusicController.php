@@ -32,8 +32,8 @@ class MusicController extends Controller{
      * From tambah music
      */
     public function create(){
-        $genres = Genre::orderBy('name','desc')->get();
-        $artists = Artist::orderBy('name','desc')->get();
+        $genres = Genre::orderBy('name','asc')->get();
+        $artists = Artist::orderBy('name','asc')->get();
 
         return view('pages.admin.music.create',[
             'genres'=>$genres,
@@ -77,7 +77,7 @@ class MusicController extends Controller{
      */
     public function show()
     {
-        $music = Music::orderBy('log','desc')->orderBy('title','desc')->get();
+        $music = Music::orderBy('log','desc')->orderBy('title','asc')->get();
         return view('pages.admin.music.show',[
             'musics'=>$music
         ]);
@@ -88,8 +88,8 @@ class MusicController extends Controller{
      */
     public function edit($slug){
         $music = Music::where('slug',$slug)->first();
-        $genre = Genre::orderBy('name','desc')->get();
-        $artist = Artist::orderBy('name','desc')->get();
+        $genre = Genre::orderBy('name','asc')->get();
+        $artist = Artist::orderBy('name','asc')->get();
         return view('pages.admin.music.edit',[
             'music'=>$music,
             'genres'=>$genre,
