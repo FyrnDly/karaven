@@ -256,9 +256,6 @@ footer{
     box-shadow: 2px 4px 8px 0px rgba($color: $primary100, $alpha: 0.30);
     border-radius: 10px;
     border: none;
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
     &.card-lagu{
         flex-direction: row;
         padding: 10px 15px;
@@ -289,6 +286,8 @@ footer{
         h4{
             margin-top: auto;
             margin-bottom: 50px;
+            text-align: center;
+            width: 100%;
         }
     }
     &.card-artist{
@@ -304,4 +303,20 @@ footer{
     h4{
         color: $natural100;
     }
+}
+
+// Text Hidden
+.text-wrap{
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+// Bg-Darken
+.bg-darken{
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: $natural10, $alpha: .5);
+    display: flex;
+    align-items: center;
 }

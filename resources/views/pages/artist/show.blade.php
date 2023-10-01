@@ -7,17 +7,20 @@
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/landing-page/style.css') }}">
 @endpush
+
 {{-- Content --}}
 @section('content')
 <header class="d-flex align-items-start detail" style="background-image: url({{ $artist->thumbnail != null ? $artist->thumbnail : url('user/assets/icon/artist.svg') }});">
-    <div class="container">
-        <div aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('artist.index') }}">Artist</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $artist->name }}</li>
-            </ol>
-        </div>
-        <h2>Daftar Lagu <b>{{ $artist->name }}</b></h2>
+    <div class="bg-darken">
+        <div class="container">
+            <div aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('artist.index') }}">Artist</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $artist->name }}</li>
+                </ol>
+            </div>
+            <h2>Daftar Lagu <b>{{ $artist->name }}</b></h2>
+		</div>
     </div>
 </header>
 

@@ -10,15 +10,17 @@
 
 {{-- Content --}}
 @section('content')
-<header class="d-flex align-items-start detail" style="background-image: url({{ $genre->thumbnail != null ? $genre->thumbnail : url('user/assets/image/genre.jpg') }});">
-    <div class="container">
-        <div aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('genre.index') }}">Genre</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $genre->name }}</li>
-            </ol>
+<header class="d-flex align-items-start detail genre" style="background-image: url({{ $genre->thumbnail != null ? $genre->thumbnail : url('user/assets/image/genre.jpg') }});">
+    <div class="bg-darken">
+        <div class="container">
+            <div aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('genre.index') }}">Genre</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $genre->name }}</li>
+                </ol>
+            </div>
+            <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
         </div>
-        <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
     </div>
 </header>
 

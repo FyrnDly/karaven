@@ -25,12 +25,19 @@ $primary25: #FF9FC1;
 
 // Header Style
 header.detail{
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat;
+    background-size: auto;
     background-position: center;
     margin-bottom: 50px;
-    padding: 50px 0px;
     height: 30vh;
+    &.genre{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .bg-darken{
+        padding: 50px 0px;
+    }
     h2{
         color: $natural100;
         b{
