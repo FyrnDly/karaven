@@ -47,7 +47,7 @@ class ArtistController extends Controller{
         $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $artist->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('artist'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/artist', $thumbnail);
             $artist->thumbnail = '/artist/'.$thumbnail;
         }
 
@@ -94,7 +94,7 @@ class ArtistController extends Controller{
         $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $artist->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('artist'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/artist', $thumbnail);
             $artist->thumbnail = '/artist/'.$thumbnail;
         }
 
@@ -108,7 +108,7 @@ class ArtistController extends Controller{
     public function destroy($id){
         $artist = Artist::where('id',$id)->first();
         if($artist){
-            $image_path = public_path().$artist->thumbnail; 
+            $image_path = $_SERVER['DOCUMENT_ROOT'].$artist->thumbnail; 
             if($image_path!=null){
                 File::delete($image_path);
             }

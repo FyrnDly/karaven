@@ -47,7 +47,7 @@ class GenreController extends Controller{
         $genre->slug = Str::slug($genre->name,'-').'-'.$genre->id.$tgl;
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $genre->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('genre'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/genre', $thumbnail);
             $genre->thumbnail = '/genre/'.$thumbnail;
         }
 
@@ -94,7 +94,7 @@ class GenreController extends Controller{
         $genre->slug = Str::slug($genre->name,'-').'-'.$genre->id.$tgl;
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $genre->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('genre'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/genre', $thumbnail);
             $genre->thumbnail = '/genre/'.$thumbnail;
         }
 
@@ -108,7 +108,7 @@ class GenreController extends Controller{
     public function destroy($id){
         $genre = Genre::where('id',$id)->first();
         if($genre){
-            $image_path = public_path().$genre->thumbnail; 
+            $image_path = $_SERVER['DOCUMENT_ROOT'].$genre->thumbnail; 
             if($image_path!=null){
                 File::delete($image_path);
             }

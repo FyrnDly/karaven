@@ -65,7 +65,7 @@ class MusicController extends Controller{
         $music->slug = Str::slug($music->title,'-').'-'.$music->id.$tgl;
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $music->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('music'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/music', $thumbnail);
             $music->thumbnail = '/music/'.$thumbnail;
         }
 
@@ -122,7 +122,7 @@ class MusicController extends Controller{
         
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $music->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-            $path = $request->file('thumbnail')->move(public_path('music'), $thumbnail);
+            $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/music', $thumbnail);
             $music->thumbnail = '/music/'.$thumbnail;
         }
         $music->save();
@@ -136,7 +136,7 @@ class MusicController extends Controller{
     public function destroy($id){
         $music = Music::where('id',$id)->first();
         if($music) {
-            $image_path = public_path().$music->thumbnail; 
+            $image_path = $_SERVER['DOCUMENT_ROOT'].$music->thumbnail; 
             if ($image_path!=null) {
                 File::delete($image_path);
             }
