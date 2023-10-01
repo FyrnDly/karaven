@@ -29,6 +29,16 @@ main .play-music .d-flex {
   border-radius: 0 0 15px 15px;
   background-color: #D5D5D5;
 }
+main .play-music .d-flex .label-music {
+  color: #0B0B0B;
+}
+main .play-music .d-flex .label-music h4 {
+  color: #DD004E;
+  margin-bottom: 5px;
+}
+main .play-music .d-flex .label-music a {
+  color: #0B0B0B;
+}
 main .queue {
   width: 100%;
   background-color: #FF9FC1;

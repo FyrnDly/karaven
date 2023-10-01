@@ -46,6 +46,16 @@ main{
             padding: 10px 25px;
             border-radius: 0 0 15px 15px;
             background-color: $natural80;
+            .label-music{
+                color: $natural10;
+                h4{
+                    color: $primary100;
+                    margin-bottom: 5px;
+                }
+                a{
+                    color: $natural10;
+                }
+            }
         }
     }
     .queue{

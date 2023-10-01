@@ -24,4 +24,15 @@ class Music extends Model{
     public function playlists(){
         return $this->belongsToMany(Playlist::class, 'music_playlist');
     }
+    
+    public function toSearchableArray(){
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'source' => $this->source_music,
+            'artist' => $this->artist->name,
+            'genre' => $this->genre->name,
+        ];
+    }
 }

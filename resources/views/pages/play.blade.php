@@ -15,14 +15,13 @@
         <div class="col-lg-9 px-2 my-5">
             <div class="play-music">
                 {!! $music->source_music !!}
-                {{-- <div class="d-flex justify-content-end align-items-center w-100">
-                    <a href="#" class="btn btn-white"><i class="bi bi-arrow-bar-left"></i>
-                        <p class="d-none d-md-inline-block">Lagu Sebelumnya</p>
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        <p class="d-none d-md-inline-block">Lagu Berikutnya</p> <i class="bi bi-arrow-bar-right"></i>
-                    </a>
-                </div> --}}
+                <div class="d-flex justify-content-start align-items-center w-100 ">
+                    <div class="label-music">
+                        <h4>{{ $music->title }}</h4>
+                        <a href="{{ route('artist.detail',$music->artist->slug) }}">{{ $music->artist->name }}</a> |
+                        <a href="{{ route('genre.detail',$music->genre->slug) }}">{{ $music->genre->name }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

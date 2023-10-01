@@ -22,8 +22,8 @@
             @foreach ($musics as $music)
             <tr>
                 <td>{{ $music->title }}</td>
-                <td>{{ $music->artist->name }}</td>
-                <td>{{ $music->genre->name }}</td>
+                <td class="text-center">{{ $music->artist->name }}</td>
+                <td class="text-center">{{ $music->genre->name }}</td>
                 <td class="d-flex gap-4">
                     <a href="{{ route('admin.music.edit',$music->slug) }}" class="btn btn-primary">
                         <i class="bi bi-pencil"></i>
