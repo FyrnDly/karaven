@@ -50,7 +50,7 @@ class GenreController extends Controller{
         }
 
         $genre->save();
-        return redirect()->route('home');
+        return redirect()->route('admin.genre.show');
     }
 
     /**
