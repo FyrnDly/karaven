@@ -25,8 +25,7 @@
 <main class="container">
     @if (count($musics)!=0 or count($musics)!=null)
     <h2>Hasil Pencarian Untuk <b>"{{ $key }}"</b></h2>
-    <div class="row justify-content-center">
-        @foreach ($musics as $music)
+    <div class="row justify-content-center text-wrap"> @foreach ($musics as $music)
         <div class="col-md-6 p-2">
             <div class="card card-lagu">
                 <a href="{{ route('music',$music->slug) }}">

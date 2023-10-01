@@ -26,8 +26,7 @@
 
 <main class="container">
     <!-- content card music -->
-    <div class="row justify-content-center">
-        @if (count($musics)!=0 or count($musics)!=null)
+    <div class="row justify-content-center text-wrap"> @if (count($musics)!=0 or count($musics)!=null)
         @foreach ($musics as $music)
         <div class="col-md-6 p-2">
             <div class="card card-lagu">

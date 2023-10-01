@@ -15,7 +15,7 @@
     @include('include.navbar.navside')
     @if (count($popular_musics)!=0)
     <h2>Lagu Paling <b>Sering Diputar</b></h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center text-wrap">
     @foreach ($popular_musics as $music)
         <div class="col-md-6 p-2">
             <div class="card card-lagu">
@@ -43,11 +43,10 @@
         </span>
     </div>
     @endif
-    
 	@if(count($new_musics)!=0)
 	<h2>Lagu <b>Baru Ditambahkan</b></h2>
-	<div class="row justify-content-center">
-		@foreach ($new_musics as $music)
+	<div class="row justify-content-center text-wrap">
+	@foreach ($new_musics as $music)
 		<div class="col-md-6 p-2">
 		    <div class="card card-lagu">
 		        <a href="{{ route('music',$music->slug) }}">
@@ -69,7 +68,7 @@
 
 	@if(count($musics)!=0)
 	<h2>Lagu Lainnya</h2>
-	<div class="row justify-content-center">
+	<div class="row justify-content-center text-wrap">
     @foreach ($musics as $music)
 		<div class="col-md-6 p-2">
 		    <div class="card card-lagu">

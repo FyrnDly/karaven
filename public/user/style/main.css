@@ -288,6 +288,11 @@ footer .footer-items a small:hover {
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+.text-wrap * {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
 
 .bg-darken {
   height: 100%;
