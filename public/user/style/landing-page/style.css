@@ -6,6 +6,49 @@
   font-family: "Roboto";
   src: url(/user/assets/font/Roboto-Regular.ttf) format("truetype");
 }
+header.detail {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 50px;
+  padding: 50px 0px;
+  height: 30vh;
+}
+header.detail h2 {
+  color: #F7F7F7;
+}
+header.detail h2 b {
+  color: #DD004E !important;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 2.5rem;
+  letter-spacing: 0.75px;
+}
+header.detail .breadcrumb-item {
+  color: #F7F7F7;
+  text-decoration: underline;
+  font-size: 1.6rem;
+}
+header.detail .breadcrumb-item a {
+  font-size: 1.6rem;
+  font-weight: 200;
+}
+header.detail .breadcrumb-item a:hover {
+  font-weight: 200;
+  color: #F7F7F7;
+}
+header.detail .breadcrumb-item.active {
+  color: #DD004E !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+@media screen and (max-width: 480px) {
+  header.detail {
+    height: 50vh;
+  }
+}
+
 main .nav-list {
   padding-top: 50px;
   border-radius: 5px;
@@ -28,7 +71,6 @@ main h2 b {
   color: #DD004E !important;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  color: #0B0B0B;
   line-height: normal;
   font-size: 2.5rem;
   letter-spacing: 0.75px;

@@ -9,9 +9,20 @@
 @endpush
 {{-- Content --}}
 @section('content')
+<header class="d-flex align-items-start detail" style="background-image: url({{ $artist->thumbnail != null ? $artist->thumbnail : url('user/assets/icon/artist.svg') }});">
+    <div class="container">
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('artist.index') }}">Artist</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $artist->name }}</li>
+            </ol>
+        </div>
+        <h2>Daftar Lagu <b>{{ $artist->name }}</b></h2>
+    </div>
+</header>
+
 <main class="container">
     <!-- content card music -->
-    <h2>Daftar Lagu <b>{{ $artist->name }}</b></h2>
     <div class="row justify-content-center">
         @if (count($musics)!=0 or count($musics)!=null)
         @foreach ($musics as $music)

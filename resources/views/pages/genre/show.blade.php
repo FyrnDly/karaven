@@ -10,9 +10,20 @@
 
 {{-- Content --}}
 @section('content')
+<header class="d-flex align-items-start detail" style="background-image: url({{ $genre->thumbnail != null ? $genre->thumbnail : url('user/assets/image/genre.jpg') }});">
+    <div class="container">
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('genre.index') }}">Genre</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $genre->name }}</li>
+            </ol>
+        </div>
+        <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
+    </div>
+</header>
+
 <main class="container">
     <!-- content card music -->
-    <h2>Daftar Lagu Genre <b>{{ $genre->name }}</b></h2>
     <div class="row justify-content-center">
         @if (count($musics)!=0 or count($musics)!=null)
         @foreach ($musics as $music)
