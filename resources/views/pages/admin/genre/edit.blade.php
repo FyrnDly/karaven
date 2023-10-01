@@ -1,5 +1,9 @@
-@extends('layout.app')
+@extends('layout.simple')
 @section('title', 'Edit Genre')
+
+@push('add-style')
+<link rel="stylesheet" href="{{ url('user/style/landing-page/style.css') }}">
+@endpush
 
 @push('add-style')
 <link rel="stylesheet" href="{{ url('user/style/admin/style.css') }}">
@@ -7,6 +11,7 @@
 
 @section('content')
 <main class="container">
+    @include('include.navbar.navadmin')
     <form action="{{ route('admin.genre.update',$genre->slug) }}" method="POST" class="row justify-content-center music" enctype='multipart/form-data'>
         @csrf
         <div class="mb-3">

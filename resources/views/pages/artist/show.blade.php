@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.simple')
 
 {{-- title --}}
 @section('title','Daftar Lagu '.$artist->name)

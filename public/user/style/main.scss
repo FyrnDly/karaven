@@ -32,9 +32,6 @@ $primary25: #FF9FC1;
     color: $natural100;
     line-height: normal;
     letter-spacing: 0.12px;
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
 }
 p{
     margin: 0;
@@ -259,6 +256,9 @@ footer{
     box-shadow: 2px 4px 8px 0px rgba($color: $primary100, $alpha: 0.30);
     border-radius: 10px;
     border: none;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
     &.card-lagu{
         flex-direction: row;
         padding: 10px 15px;

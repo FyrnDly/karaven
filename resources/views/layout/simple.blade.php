@@ -8,8 +8,7 @@
 </head>
 
 <body>
-    @include('include.navbar.navbar')
-    @include('include.header')
+    @include('include.navbar.navsimple')
 
     @yield('content')
 
@@ -17,7 +16,6 @@
 
     @stack('pra-script')
     @include('include.script')
-    <script src="{{ url('user/script/form.js') }}"></script>
     @stack('add-script')
 </body>
 </html>

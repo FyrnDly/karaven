@@ -25,11 +25,8 @@ $primary25: #FF9FC1;
 
 
 
-header{
-    height: 25vh;
-    @media screen and (max-width:480px) {
-        height: 65vh;
-    }
+.nav-list{
+    margin-top: 50px;
 }
 
 table,tr,td,th{
@@ -59,10 +56,32 @@ form.music{
     }
 }
 
+input.filter{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $natural30 !important;
+    border: $natural50;
+    color: $natural80 !important;
+    &::placeholder,&:disabled{
+        color: $natural50 !important;
+    }
+}
+
 small{
     color: $primary100;
 }
 
 table{
     margin: 25px 0px;
+    td{
+        vertical-align: middle;
+    }
+}
+
+.modal-content{
+    background-color: $natural20;
+    color: $natural80;
+    h1{
+        color: $natural100;
+    }
 }

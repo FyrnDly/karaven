@@ -25,7 +25,9 @@ class GenreController extends Controller{
      * Form buat genre
      */
     public function create(){
-        return view('pages.admin.genre.create');
+        return view('pages.admin.genre.create',[
+            'isGenre' => true
+        ]);
     }
 
     /**
@@ -59,7 +61,8 @@ class GenreController extends Controller{
     public function show(){
         $genre = Genre::orderBy('name','asc')->get();
         return view('pages.admin.genre.show',[
-            'genres'=>$genre
+            'genres'=>$genre,
+            'isGenre' => true
         ]);
     }
 
@@ -69,7 +72,8 @@ class GenreController extends Controller{
     public function edit($slug){
         $genre = Genre::where('slug',$slug)->first();
         return view('pages.admin.genre.edit',[
-            'genre'=>$genre
+            'genre'=>$genre,
+            'isGenre' => true
         ]);
     }
 

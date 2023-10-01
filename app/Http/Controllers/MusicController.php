@@ -37,7 +37,8 @@ class MusicController extends Controller{
 
         return view('pages.admin.music.create',[
             'genres'=>$genres,
-            'artists'=>$artists
+            'artists'=>$artists,
+            'isMusic'=>true
         ]);
     }
 
@@ -79,7 +80,8 @@ class MusicController extends Controller{
     {
         $music = Music::orderByRaw('ISNULL(log), log DESC')->orderBy('title','asc')->get();
         return view('pages.admin.music.show',[
-            'musics'=>$music
+            'musics'=>$music,
+            'isMusic'=>true
         ]);
     }
 
@@ -93,7 +95,8 @@ class MusicController extends Controller{
         return view('pages.admin.music.edit',[
             'music'=>$music,
             'genres'=>$genre,
-            'artists'=>$artist
+            'artists'=>$artist,
+            'isMusic'=>true
         ]);
     }
 

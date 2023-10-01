@@ -6,13 +6,8 @@
   font-family: "Roboto";
   src: url(/user/assets/font/Roboto-Regular.ttf) format("truetype");
 }
-header {
-  height: 25vh;
-}
-@media screen and (max-width: 480px) {
-  header {
-    height: 65vh;
-  }
+.nav-list {
+  margin-top: 50px;
 }
 
 table, tr, td, th {
@@ -45,10 +40,35 @@ form.music input::placeholder, form.music input:disabled, form.music select::pla
   color: #7C7C7C !important;
 }
 
+input.filter {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #383838 !important;
+  border: #7C7C7C;
+  color: #D5D5D5 !important;
+}
+input.filter::-moz-placeholder {
+  color: #7C7C7C !important;
+}
+input.filter::placeholder, input.filter:disabled {
+  color: #7C7C7C !important;
+}
+
 small {
   color: #DD004E;
 }
 
 table {
   margin: 25px 0px;
+}
+table td {
+  vertical-align: middle;
+}
+
+.modal-content {
+  background-color: #161616;
+  color: #D5D5D5;
+}
+.modal-content h1 {
+  color: #F7F7F7;
 }/*# sourceMappingURL=style.css.map */

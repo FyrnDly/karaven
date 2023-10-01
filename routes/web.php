@@ -6,6 +6,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [AppController::class, 'index'])->name('home');
 Route::get('/music/{slug}', [MusicController::class,'index'])->name('music');
@@ -16,17 +17,17 @@ Route::prefix('genre')->name('genre.')->group(function(){
     Route::get('/{slug}',[GenreController::class,'index'])->name('detail');
 });
 
-// Route::prefix('playlist')->name('playlist.')->group(function(){
-//     Route::get('/show', [AppController::class, 'playlist'])->name('index');
-// });
-
 Route::prefix('artist')->name('artist.')->group(function(){
     Route::get('/show', [AppController::class, 'artist'])->name('index');
     Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
 
+// Route::prefix('playlist')->name('playlist.')->group(function(){
+//     Route::get('/show', [AppController::class, 'playlist'])->name('index');
+// });
 
 Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/',[AdminController::class,'index'])->name('index');
     Route::prefix('artist')->name('artist.')->group(function(){
         Route::get('/', [ArtistController::class,'show'])->name('show');
         Route::get('/create',[ArtistController::class,'create'])->name('create');

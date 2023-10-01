@@ -25,7 +25,9 @@ class ArtistController extends Controller{
      * From buat artist 
      */
     public function create(){
-        return view('pages.admin.artist.create');
+        return view('pages.admin.artist.create',[
+            'isArtist'=>true
+        ]);
     }
 
     /**
@@ -59,7 +61,8 @@ class ArtistController extends Controller{
     public function show(){
         $artist = Artist::orderBy('name','asc')->get();
         return view('pages.admin.artist.show',[
-            'artists'=>$artist
+            'artists'=>$artist,
+            'isArtist'=>true
         ]);
     }
 
@@ -69,7 +72,8 @@ class ArtistController extends Controller{
     public function edit($slug){
         $artist = Artist::where('slug',$slug)->first();
         return view('pages.admin.artist.edit',[
-            'artist'=>$artist
+            'artist'=>$artist,
+            'isArtist'=>true
         ]);
     }
 

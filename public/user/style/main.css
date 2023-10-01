@@ -13,9 +13,6 @@
   color: #F7F7F7;
   line-height: normal;
   letter-spacing: 0.12px;
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
 }
 
 p {
@@ -239,6 +236,9 @@ footer .footer-items a small:hover {
   box-shadow: 2px 4px 8px 0px rgba(221, 0, 78, 0.3);
   border-radius: 10px;
   border: none;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 .card.card-lagu {
   flex-direction: row;
