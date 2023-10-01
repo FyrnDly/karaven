@@ -13,10 +13,10 @@
 <main class="container">
     <!-- content card music -->
     @include('include.navbar.navside')
-    @if (count($musics)!=0 or count($musics)!=null)
+    @if (count($popular_musics)!=0)
     <h2>Lagu Paling <b>Sering Diputar</b></h2>
     <div class="row justify-content-center">
-        @foreach ($musics as $music)
+    @foreach ($popular_musics as $music)
         <div class="col-md-6 p-2">
             <div class="card card-lagu">
                 <a href="{{ route('music',$music->slug) }}">
@@ -29,11 +29,10 @@
                     <p>
                         <a href="{{ route('artist.detail', $music->artist->slug) }}"><b>{{ $music->artist->name}}</b></a> |
                         <a href="{{ route('genre.detail', $music->genre->slug) }}">{{ $music->genre->name}}</a>
-
                 </div>
             </div>
         </div>
-        @endforeach
+    @endforeach
     </div>
     @else
     <div class="d-flex flex-column justify-content-center gap-2 my-4 mx-2">
@@ -44,9 +43,56 @@
         </span>
     </div>
     @endif
-    {{-- <h2>Lagu Baru <b>Ditambahkan</b></h2>
-    <div class="d-flex">
-        <a href="#" class="mx-auto btn btn-white">Tampilkan Lagu Lainnya</a>
-    </div> --}}
+    
+	@if(count($new_musics)!=0)
+	<h2>Lagu <b>Baru Ditambahkan</b></h2>
+	<div class="row justify-content-center">
+		@foreach ($new_musics as $music)
+		<div class="col-md-6 p-2">
+		    <div class="card card-lagu">
+		        <a href="{{ route('music',$music->slug) }}">
+		            <img src="{{ $music->thumbnail!=null ? $music->thumbnail : url('user/assets/image/music.jpg') }}" alt="{{ $music->title }}">
+		        </a>
+		        <div class="text w-100">
+		            <a href="{{ route('music',$music->slug) }}" class="w-100">
+		                <h4>{{ $music->title }}</h4>
+		            </a>
+		            <p>
+		                <a href="{{ route('artist.detail', $music->artist->slug) }}"><b>{{ $music->artist->name}}</b></a> |
+		                <a href="{{ route('genre.detail', $music->genre->slug) }}">{{ $music->genre->name}}</a>
+		        </div>
+		    </div>
+		</div>
+	@endforeach
+	</div>
+	@endif
+
+	@if(count($musics)!=0)
+	<h2>Lagu Lainnya</h2>
+	<div class="row justify-content-center">
+    @foreach ($musics as $music)
+		<div class="col-md-6 p-2">
+		    <div class="card card-lagu">
+		        <a href="{{ route('music',$music->slug) }}">
+		            <img src="{{ $music->thumbnail!=null ? $music->thumbnail : url('user/assets/image/music.jpg') }}" alt="{{ $music->title }}">
+		        </a>
+		        <div class="text w-100">
+		            <a href="{{ route('music',$music->slug) }}" class="w-100">
+		                <h4>{{ $music->title }}</h4>
+		            </a>
+		            <p>
+		                <a href="{{ route('artist.detail', $music->artist->slug) }}"><b>{{ $music->artist->name}}</b></a> |
+		                <a href="{{ route('genre.detail', $music->genre->slug) }}">{{ $music->genre->name}}</a>
+		        </div>
+		    </div>
+		</div>
+    @endforeach
+	</div>
+		@if($musics->count() < $musics->total())
+	    <div class="text-center mt-4">
+			<button class="btn btn-white" onclick="window.location.href='{{ url('/?per_page='.($musics->count()+4).'&page='.$musics->currentPage()) }}'">Tampilkan lebih banyak</button>
+	    </div>
+		@endif
+    @endif
 </main>
 @endsection
