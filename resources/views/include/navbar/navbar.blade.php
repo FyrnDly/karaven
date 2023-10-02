@@ -1,5 +1,4 @@
 @guest
-
 <nav class="navbar navbar-expand-md fixed-top">
     <div class="container">
         <div class="d-flex w-100 justify-content-around align-items-center" id="navItems">
@@ -8,7 +7,6 @@
     </div>
 </nav>
 @endguest
-
 
 @auth
 <nav class="navbar navbar-expand-md fixed-top">
