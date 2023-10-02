@@ -78,10 +78,34 @@ table{
     }
 }
 
-.modal-content{
-    background-color: $natural20;
-    color: $natural80;
-    h1{
-        color: $natural100;
+h2.auth{
+    color: $natural100;
+    text-align: center;
+}
+
+.card-form{
+    background-color: rgba($color: $natural30, $alpha: .25);
+    padding: 25px 50px;
+    margin-top: 10vh;
+    border-radius: 25px;
+    form{
+        gap: 10px;
+        p{
+            color: $natural70;
+        }
+        .invalid-feedback{
+            strong{
+                color: $primary100 !important;
+            }
+        }
+        .success-feedback{
+            background-color: $primary25;
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+            p,b{
+                color: $natural10 !important;
+            }
+        }
     }
 }

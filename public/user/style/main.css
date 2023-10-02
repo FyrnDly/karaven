@@ -94,6 +94,7 @@ h1 {
   gap: 10px;
   border-radius: 5px;
   box-shadow: 1px 2px 4px 0px rgba(11, 11, 11, 0.5);
+  justify-content: center;
 }
 .btn.btn-primary {
   background-color: #DD004E;
@@ -300,4 +301,29 @@ footer .footer-items a small:hover {
   background-color: rgba(11, 11, 11, 0.5);
   display: flex;
   align-items: center;
+}
+
+.modal-content {
+  background-color: #161616;
+  color: #D5D5D5;
+}
+.modal-content h1 {
+  color: #F7F7F7;
+}
+
+.dropdown-menu {
+  background-color: #DD004E;
+  color: #F7F7F7;
+}
+.dropdown-menu .dropdown-item {
+  font-size: 1;
+  font-weight: 700 !important;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #F7F7F7;
+  color: #0B0B0B;
+}
+.dropdown-menu button.dropdown-item:hover {
+  background-color: #FF9FC1;
+  color: #0B0B0B;
 }/*# sourceMappingURL=main.css.map */

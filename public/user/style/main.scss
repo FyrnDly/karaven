@@ -104,6 +104,7 @@ h1{
     gap: 10px;
     border-radius: 5px;
     box-shadow: 1px 2px 4px 0px rgba(11, 11, 11, 0.50);
+    justify-content: center;
     &.btn-primary{
         background-color: $primary100;
         color: $natural100;
@@ -324,4 +325,35 @@ footer{
     background-color: rgba($color: $natural10, $alpha: .5);
     display: flex;
     align-items: center;
+}
+
+// Modal
+.modal-content{
+    background-color: $natural20;
+    color: $natural80;
+    h1{
+        color: $natural100;
+    }
+}
+
+// dropdown
+.dropdown-menu{
+    background-color: $primary100;
+    color: $natural100;
+    .dropdown-item{
+        font-size: 1;
+        font-weight: 700 !important;
+        &:hover{
+            background-color: $natural100;
+            color: $natural10;
+        }
+    }
+    button{
+        &.dropdown-item{
+            &:hover{
+                background-color: $primary25;
+                color: $natural10;
+            }
+        }
+    }
 }
