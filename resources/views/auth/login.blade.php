@@ -11,7 +11,7 @@
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
                 <form method="POST" action="{{ route('login') }}" class="d-flex flex-column music w-100">
-                    <h2 class="auth">Halaman Masuk</h2>
+                    <h2>Halaman Masuk</h2>
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Alamat Email</label>
@@ -36,11 +36,12 @@
                     <div>
                         <button type="submit" class="btn btn-primary w-100 mb-2">Masuk</button>
                         <div class="text-end">
-                            <a href="{{ route('register') }}" class="btn btn-black no-fill m-2">
+                            <a href="{{ route('register') }}" class="btn btn-black no-fill m-2 p-0">
+
                                 <p>Belum Punya Akun ? <b>Daftar Sekarang</b></p>
                             </a>
                             @if (Route::has('password.request'))
-                            <a class="btn btn-black no-fill m-2" href="{{ route('password.request') }}">
+                            <a class="btn btn-black no-fill m-2 p-0" href="{{ route('password.request') }}">
                                 <p>Lupa Kata Sandi?</p>
                             </a>
                             @endif

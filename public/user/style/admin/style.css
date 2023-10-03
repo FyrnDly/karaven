@@ -15,7 +15,15 @@ table, tr, td, th {
 }
 
 form.music {
-  padding-top: 25px;
+  padding: 25px 0px;
+}
+form.music h2 {
+  color: #F7F7F7;
+  text-align: center;
+}
+form.music h3 {
+  color: #F7F7F7;
+  text-align: start;
 }
 form.music label {
   font-family: "Montserrat", sans-serif;
@@ -36,7 +44,7 @@ form.music input, form.music select, form.music option, form.music textarea {
 form.music input::-moz-placeholder, form.music select::-moz-placeholder, form.music option::-moz-placeholder, form.music textarea::-moz-placeholder {
   color: #7C7C7C !important;
 }
-form.music input::placeholder, form.music input:disabled, form.music select::placeholder, form.music select:disabled, form.music option::placeholder, form.music option:disabled, form.music textarea::placeholder, form.music textarea:disabled {
+form.music input::placeholder, form.music select::placeholder, form.music option::placeholder, form.music textarea::placeholder {
   color: #7C7C7C !important;
 }
 
@@ -63,11 +71,6 @@ table {
 }
 table td {
   vertical-align: middle;
-}
-
-h2.auth {
-  color: #F7F7F7;
-  text-align: center;
 }
 
 .card-form {

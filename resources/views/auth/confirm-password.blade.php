@@ -11,7 +11,7 @@
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
                 <form method="POST" action="{{ route('password.confirm') }}" class="d-flex flex-column music w-100">
-                    <h2 class="auth">Konfirmasi Kata Sandi</h2>
+                    <h2>Konfirmasi Kata Sandi</h2>
                     @csrf
                     <div class="mb-3">
                         <label for="password" class="form-label">Kata Sandi</label>

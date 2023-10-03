@@ -34,7 +34,15 @@ table,tr,td,th{
 }
 
 form.music{
-    padding-top: 25px;
+    padding: 25px 0px;
+    h2{
+        color: $natural100;
+        text-align: center;
+    }
+    h3{
+        color: $natural100;
+        text-align: start;
+    }
     label{
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
@@ -50,7 +58,7 @@ form.music{
         background-color: $natural30 !important;
         border: $natural50;
         color: $natural80 !important;
-        &::placeholder,&:disabled{
+        &::placeholder{
             color: $natural50 !important;
         }
     }
@@ -76,11 +84,6 @@ table{
     td{
         vertical-align: middle;
     }
-}
-
-h2.auth{
-    color: $natural100;
-    text-align: center;
 }
 
 .card-form{

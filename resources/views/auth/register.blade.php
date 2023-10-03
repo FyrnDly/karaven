@@ -11,7 +11,7 @@
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
                 <form method="POST" action="{{ route('register') }}" class="d-flex flex-column music w-100">
-                    <h2 class="auth">Halaman Pendaftaran</h2>
+                    <h2>Halaman Pendaftaran</h2>
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>
@@ -50,7 +50,7 @@
 
                     <div>
                         <button type="submit" class="btn btn-primary w-100 text-center mb-2">Daftar Sekarang</button>
-                        <a href="{{ route('login') }}" class="btn btn-black no-fill w-100 text-center">
+                        <a href="{{ route('login') }}" class="btn btn-black no-fill m-0 p-0">
                             <p>Sudah Punya Akun ? <b>Masuk</b></p>
                         </a>
                     </div>

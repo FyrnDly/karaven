@@ -11,7 +11,7 @@
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
                 <form method="POST" action="{{ route('password.store') }}" class="d-flex flex-column music w-100">
-                    <h2 class="auth">Ubah Kata Sandi</h2>
+                    <h2>Ubah Kata Sandi</h2>
                     @csrf
                     <!-- Password Reset Token -->
                     <input type="hidden" name="token" value="{{ $request->route('token') }}">

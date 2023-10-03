@@ -20,7 +20,9 @@
                         <p>Hai, <b>{{ Auth::user()->name }}</b></p>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Super Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
                         <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar</button></li>
                     </ul>
                 </li>

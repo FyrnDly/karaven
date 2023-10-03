@@ -11,7 +11,7 @@
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
                 <form method="POST" action="{{ route('password.email') }}" class="d-flex flex-column music w-100">
-                    <h2 class="auth">Lupa Kata Sandi</h2>
+                    <h2>Lupa Kata Sandi</h2>
                     <p>Anda Lupa Kata Sandi? Tidak Masalah, hanya perlu alamat email anda untuk mengubah kata sandi anda melalui pesan email yang dikirim</p>
                     @csrf
                     <div class="mb-3">

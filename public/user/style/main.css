@@ -323,6 +323,9 @@ footer .footer-items a small:hover {
   background-color: #F7F7F7;
   color: #0B0B0B;
 }
+.dropdown-menu button {
+  color: #B4B4B4;
+}
 .dropdown-menu button.dropdown-item:hover {
   background-color: #FF9FC1;
   color: #0B0B0B;
