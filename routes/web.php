@@ -38,7 +38,7 @@ Route::prefix('artist')->name('artist.')->group(function(){
 //     Route::get('/show', [AppController::class, 'playlist'])->name('index');
 // });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function(){
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin'])->group(function(){
     Route::get('/',[AdminController::class,'index'])->name('index');
     Route::prefix('artist')->name('artist.')->group(function(){
         Route::get('/', [ArtistController::class,'show'])->name('show');
@@ -74,7 +74,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['verified','root'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
