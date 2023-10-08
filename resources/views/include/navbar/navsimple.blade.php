@@ -15,7 +15,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a></li>
                         @endif
                         @if(Auth::user()->role == 'root')
-                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Super Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('dashboard.index') }}">Super Admin</a></li>
                         @endif
                         <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
                         <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar</button></li>

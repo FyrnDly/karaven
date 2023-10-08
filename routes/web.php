@@ -8,6 +8,7 @@ use App\Http\Controllers\MusicController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RootController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,25 +22,19 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [AppController::class, 'index'])->name('home');
-Route::get('/music', function () {
+Route::get('/musics', function(){
     return redirect()->route('home');
 });
-Route::get('/music/{slug}', [MusicController::class,'index'])->name('music');
+Route::get('/musics/{slug}', [MusicController::class,'index'])->name('music');
 Route::post('/search',[AppController::class,'search'])->name('search');
 
-Route::prefix('genre')->name('genre.')->group(function(){
-    Route::get('/', function () {
-        return redirect()->route('genre.index');
-    });
-    Route::get('/show', [AppController::class, 'genre'])->name('index');
+Route::prefix('genres')->name('genre.')->group(function(){
+    Route::get('/', [AppController::class, 'genre'])->name('index');
     Route::get('/{slug}',[GenreController::class,'index'])->name('detail');
 });
 
-Route::prefix('artist')->name('artist.')->group(function(){
-    Route::get('/', function () {
-        return redirect()->route('artist.index');
-    });
-    Route::get('/show', [AppController::class, 'artist'])->name('index');
+Route::prefix('artists')->name('artist.')->group(function(){
+    Route::get('/', [AppController::class, 'artist'])->name('index');
     Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
 
@@ -81,9 +76,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['verified','root'])->name('dashboard');
+Route::prefix('/dashboard')->middleware(['verified','root'])->name('dashboard.')->group(function(){
+    Route::get('/',[RootController::class,'index'])->name('index');
+    Route::post('/update/{id}',[RootController::class,'update'])->name('update');
+    Route::post('/remove/{id}',[RootController::class,'destroy'])->name('delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

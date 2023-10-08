@@ -329,4 +329,22 @@ footer .footer-items a small:hover {
 .dropdown-menu button.dropdown-item:hover {
   background-color: #FF9FC1;
   color: #0B0B0B;
+}
+
+.invalid-feedback {
+  margin: 15px 0px;
+}
+.invalid-feedback strong {
+  color: #DD004E !important;
+}
+
+.success-feedback {
+  margin: 15px 0px;
+  background-color: #FF9FC1;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+.success-feedback p, .success-feedback b {
+  color: #0B0B0B !important;
 }/*# sourceMappingURL=main.css.map */

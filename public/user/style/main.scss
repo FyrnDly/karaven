@@ -358,3 +358,20 @@ footer{
         }
     }
 }
+
+.invalid-feedback{
+    margin: 15px 0px;
+    strong{
+        color: $primary100 !important;
+    }
+}
+.success-feedback{
+    margin: 15px 0px;
+    background-color: $primary25;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    p,b{
+        color: $natural10 !important;
+    }
+}

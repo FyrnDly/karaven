@@ -96,19 +96,5 @@ table{
         p{
             color: $natural70;
         }
-        .invalid-feedback{
-            strong{
-                color: $primary100 !important;
-            }
-        }
-        .success-feedback{
-            background-color: $primary25;
-            padding: 10px;
-            border-radius: 10px;
-            width: 100%;
-            p,b{
-                color: $natural10 !important;
-            }
-        }
     }
 }

@@ -84,16 +84,4 @@ table td {
 }
 .card-form form p {
   color: #B4B4B4;
-}
-.card-form form .invalid-feedback strong {
-  color: #DD004E !important;
-}
-.card-form form .success-feedback {
-  background-color: #FF9FC1;
-  padding: 10px;
-  border-radius: 10px;
-  width: 100%;
-}
-.card-form form .success-feedback p, .card-form form .success-feedback b {
-  color: #0B0B0B !important;
 }/*# sourceMappingURL=style.css.map */
