@@ -11,17 +11,13 @@ function moveForm() {
     if (scrollPosition > headerHeight) {
         // Ubah class untuk lebar form header untuk navbar
         formSearch.classList.remove('col-md-8', 'col-lg-6');
-        // Ubah class untuk posisi logo dan form di navbar
-        navForm.classList.remove('justify-content-around');
-        navForm.classList.add('justify-content-between');
+        formSearch.classList.add('ms-md-auto');
         // pindahin form ke navbar
         navForm.appendChild(formSearch);
     } else {
         // ubah class untuk lebar form navbar untuk header
         formSearch.classList.add('col-md-8', 'col-lg-6');
-        // Ubah class untuk posisi logo di navbar
-        navForm.classList.remove('justify-content-between');
-        navForm.classList.add('justify-content-around');
+        formSearch.classList.remove('ms-md-auto');
         // pindahin form ke header kembali
         headerForm.appendChild(formSearch);
     }
