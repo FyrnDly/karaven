@@ -1,8 +1,13 @@
 @extends('layout.simple')
 @section('title', 'Dashboard')
+
+@push('add-style')
+<link rel="stylesheet" href="{{ url('user/style/admin/style.css') }}">
+@endpush
+
 @section('content')
 <main class="container">
-    <div class="table-responsive mt-5">
+    <div class="row justify-content-between gap-2 mt-5">
         @if (session('status') === 'update')
         <div class="success-feedback" role="alert">
             <p>Status user <b>{{ session('user')->name }}</b> berhasil berubah menjadi <b>{{ session('user')->role }}</b></p>
@@ -13,6 +18,11 @@
             <p>User <b>{{ session('user')->name }}</b> berhasil dihapus</b></p>
         </div>
         @endif
+        <div class="col">
+            <input type="text" id="filterInput" placeholder="Cari cepat..." class="filter">
+        </div>
+    </div>
+    <div class="table-responsive">
         <table class="table table-striped table-dark table-hover table-borderless">
             <thead>
                 <tr class="text-center">
@@ -73,7 +83,6 @@
                                         <form action="{{ route('dashboard.delete',$user->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-primary">Hapus</button>
-
                                         </form>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                     </div>
@@ -93,3 +102,7 @@
 	</div>
 </main>
 @endsection
+
+@push('add-script')
+@include('include.scriptfilter')
+@endpush
