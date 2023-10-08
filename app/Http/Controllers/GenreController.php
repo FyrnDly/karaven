@@ -14,6 +14,7 @@ class GenreController extends Controller{
      */
     public function index($slug){
         $genre = Genre::where('slug',$slug)->first();
+        if ($genre == null){ return abort(404); }
         $musics = Music::where('genre_id',$genre->id)->get();
         return view('pages.genre.show',[
             'genre' => $genre,

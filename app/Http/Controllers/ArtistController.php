@@ -14,6 +14,7 @@ class ArtistController extends Controller{
      */
     public function index($slug){
         $artist = Artist::where('slug',$slug)->first();
+        if ($artist == null){ return abort(404); }
         $musics = Music::where('artist_id',$artist->id)->get();
         return view('pages.artist.show',[
             'artist'=>$artist,

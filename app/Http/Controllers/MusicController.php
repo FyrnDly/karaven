@@ -17,6 +17,7 @@ class MusicController extends Controller{
      */
     public function index($slug){
         $music = Music::where('slug', $slug)->first();
+        if ($music == null){ return abort(404); }
         $music->log += 1;
         $music->save();
         $embed = Embed::make($music->source_music)->parseUrl();

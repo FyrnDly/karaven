@@ -21,15 +21,24 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [AppController::class, 'index'])->name('home');
+Route::get('/music', function () {
+    return redirect()->route('home');
+});
 Route::get('/music/{slug}', [MusicController::class,'index'])->name('music');
 Route::post('/search',[AppController::class,'search'])->name('search');
 
 Route::prefix('genre')->name('genre.')->group(function(){
+    Route::get('/', function () {
+        return redirect()->route('genre.index');
+    });
     Route::get('/show', [AppController::class, 'genre'])->name('index');
     Route::get('/{slug}',[GenreController::class,'index'])->name('detail');
 });
 
 Route::prefix('artist')->name('artist.')->group(function(){
+    Route::get('/', function () {
+        return redirect()->route('artist.index');
+    });
     Route::get('/show', [AppController::class, 'artist'])->name('index');
     Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
