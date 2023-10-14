@@ -7,6 +7,7 @@ use App\Models\Music;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class ArtistController extends Controller{
     /**
@@ -42,7 +43,7 @@ class ArtistController extends Controller{
         ]);
 
         $artist = new Artist;
-        $artist->name = $request->input('title');
+        $artist->name = Str::title($request->input('title'));
         $artist->save();
 
         $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
@@ -53,7 +54,7 @@ class ArtistController extends Controller{
         }
 
         $artist->save();
-        return redirect()->route('admin.artist.show');
+        return Redirect::route('admin.artist.show')->with('status','create')->with('artist',$artist);
     }
 
     /**
@@ -89,7 +90,7 @@ class ArtistController extends Controller{
         ]);
 
         $artist = Artist::where('slug',$slug)->first();
-        $artist->name = $request->input('title');
+        $artist->name = Str::title($request->input('title'));
         $artist->save();
 
         $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
@@ -100,7 +101,7 @@ class ArtistController extends Controller{
         }
 
         $artist->save();
-        return redirect()->route('admin.artist.show');
+        return Redirect::route('admin.artist.show')->with('status','update')->with('artist',$artist);
     }
 
     /**
@@ -108,6 +109,7 @@ class ArtistController extends Controller{
      */
     public function destroy($id){
         $artist = Artist::where('id',$id)->first();
+        $artist_old = $artist;
         if($artist){
             $image_path = $_SERVER['DOCUMENT_ROOT'].$artist->thumbnail; 
             if($image_path!=null){
@@ -115,6 +117,6 @@ class ArtistController extends Controller{
             }
             $artist->delete();
         }
-        return redirect()->route('admin.artist.show');
+        return Redirect::route('admin.artist.show')->with('status','destroy')->with('artist',$artist_old);
     }
 }

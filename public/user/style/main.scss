@@ -361,7 +361,11 @@ footer{
 
 .invalid-feedback{
     margin: 15px 0px;
-    strong{
+    background-color: $natural30;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    p,b,strong{
         color: $primary100 !important;
     }
 }

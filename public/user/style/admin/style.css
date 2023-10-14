@@ -35,16 +35,16 @@ form.music label {
   font-size: 1.6rem;
   letter-spacing: 0.3px;
 }
-form.music input, form.music select, form.music option, form.music textarea {
+form.music input, form.music select, form.music option, form.music textarea, form.music .addon-form {
   margin-top: 5px;
   background-color: #383838 !important;
   border: #7C7C7C;
   color: #D5D5D5 !important;
 }
-form.music input::-moz-placeholder, form.music select::-moz-placeholder, form.music option::-moz-placeholder, form.music textarea::-moz-placeholder {
+form.music input::-moz-placeholder, form.music select::-moz-placeholder, form.music option::-moz-placeholder, form.music textarea::-moz-placeholder, form.music .addon-form::-moz-placeholder {
   color: #7C7C7C !important;
 }
-form.music input::placeholder, form.music select::placeholder, form.music option::placeholder, form.music textarea::placeholder {
+form.music input::placeholder, form.music select::placeholder, form.music option::placeholder, form.music textarea::placeholder, form.music .addon-form::placeholder {
   color: #7C7C7C !important;
 }
 

@@ -7,6 +7,7 @@ use App\Models\Music;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class GenreController extends Controller{
     /**
@@ -42,7 +43,7 @@ class GenreController extends Controller{
         ]);
 
         $genre = new Genre;
-        $genre->name = $request->input('title');
+        $genre->name = Str::title($request->input('title'));
         $genre->save();
 
         $genre->slug = Str::slug($genre->name,'-').'-'.$genre->id.$tgl;
@@ -53,7 +54,7 @@ class GenreController extends Controller{
         }
 
         $genre->save();
-        return redirect()->route('admin.genre.show');
+        return Redirect::route('admin.genre.show')->with('status','create')->with('genre',$genre);
     }
 
     /**
@@ -89,7 +90,7 @@ class GenreController extends Controller{
         ]);
 
         $genre = Genre::where('slug',$slug)->first();
-        $genre->name = $request->input('title');
+        $genre->name = Str::title($request->input('title'));
         $genre->save();
 
         $genre->slug = Str::slug($genre->name,'-').'-'.$genre->id.$tgl;
@@ -100,7 +101,7 @@ class GenreController extends Controller{
         }
 
         $genre->save();
-        return redirect()->route('admin.genre.show');
+        return Redirect::route('admin.genre.show')->with('status','update')->with('genre',$genre);
     }
 
     /**
@@ -108,6 +109,7 @@ class GenreController extends Controller{
      */
     public function destroy($id){
         $genre = Genre::where('id',$id)->first();
+        $genre_old = $genre;
         if($genre){
             $image_path = $_SERVER['DOCUMENT_ROOT'].$genre->thumbnail; 
             if($image_path!=null){
@@ -115,6 +117,6 @@ class GenreController extends Controller{
             }
             $genre->delete();
         }
-        return redirect()->route('admin.genre.show');
+        return Redirect::route('admin.genre.show')->with('status','destroy')->with('genre',$genre_old);
     }
 }

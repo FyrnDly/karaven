@@ -333,8 +333,12 @@ footer .footer-items a small:hover {
 
 .invalid-feedback {
   margin: 15px 0px;
+  background-color: #383838;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
 }
-.invalid-feedback strong {
+.invalid-feedback p, .invalid-feedback b, .invalid-feedback strong {
   color: #DD004E !important;
 }
 

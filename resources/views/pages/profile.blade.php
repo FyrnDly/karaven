@@ -7,6 +7,17 @@
 
 @section('content')
 <main class="container">
+    @if (session('status') === 'password-updated')
+    <div class="success-feedback" role="alert">
+        <p>Kata Sandi Telah Diperbarui</p>
+    </div>
+    @endif
+    @if (session('status') === 'profile-updated')
+    <div class="success-feedback" role="alert">
+        <p>Data Telah Diperbarui</p>
+    </div>
+    @endif
+
     <div class="row justify-content-center aligin-items-center h-100">
         <div class="col-md-10 col-lg-8">
             <div class="card card-form">
@@ -31,13 +42,13 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Alamat Email</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required @disabled($user->email_verified_at) autocomplete="username">
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>Alamat Email Anda Masukkan Sudah Terdaftar</strong>
-                        </span>
-                        @enderror
-                        @if(! $user->email_verified_at)
+                        @if($user->email_verified_at)
+                        <div class="input-group">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email',$user->email) }}" disabled required autocomplete="username" aria-describedby="addon-verify">
+                            <span class="input-group-text addon-form" id="addon-verify"><i class="bi bi-patch-check"></i></span>
+                        </div>
+                        @else
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required autocomplete="username">
                         <div class="m-1">
                             Anda Belum Verifikasi Email
                             <button form="send-verification" class="btn btn-black no-fill m-0 p-0">
@@ -47,23 +58,21 @@
 
                         @if (session('status') === 'verification-link-sent')
                         <div class="success-feedback" role="alert">
-                            <p>
-                                Pesan Verifikasi Baru Saja Dikirim
-                            </p>
+                            <p>Pesan Verifikasi Baru Saja Dikirim</p>
                         </div>
                         @endif
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>Alamat Email Anda Masukkan Sudah Terdaftar</strong>
+                        </span>
+                        @enderror
+
                         @endif
                     </div>
 
                     <div>
                         <button type="submit" class="btn btn-primary w-100 mb-2">Perbarui Informasi</button>
                     </div>
-
-                    @if (session('status') === 'profile-updated')
-                    <div class="success-feedback" role="alert">
-                        <p>Data Telah Diperbarui</p>
-                    </div>
-                    @endif
                 </form>
             </div>
         </div>
@@ -102,12 +111,6 @@
                     <div>
                         <button type="submit" class="btn btn-white w-100 mb-2">Ubah Kata Sandi</button>
                     </div>
-
-                    @if (session('status') === 'password-updated')
-                    <div class="success-feedback" role="alert">
-                        <p>Kata Sandi Telah Diperbarui</p>
-                    </div>
-                    @endif
                 </form>
             </div>
         </div>

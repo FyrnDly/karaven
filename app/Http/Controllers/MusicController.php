@@ -9,6 +9,7 @@ use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 use Embed;
 
 class MusicController extends Controller{
@@ -57,7 +58,7 @@ class MusicController extends Controller{
         ]);
 
         $music = new Music;
-        $music->title = $request->input('title');
+        $music->title = Str::title($request->input('title'));
         $music->genre_id = $request->input('genre');
         $music->artist_id = $request->input('artist');
         $music->source_music = $request->input('source');
@@ -71,7 +72,7 @@ class MusicController extends Controller{
         }
 
         $music->save();
-        return redirect()->route('admin.music.show');
+        return Redirect::route('admin.music.show')->with('status','create')->with('music',$music);
     }
 
     /**
@@ -115,7 +116,7 @@ class MusicController extends Controller{
         ]);
         
         $music = Music::where('slug',$slug)->first();
-        $music->title = $request->input('title');
+        $music->title = Str::title($request->input('title'));
         $music->genre_id = $request->input('genre');
         $music->artist_id = $request->input('artist');
         $music->source_music = $request->input('source');
@@ -128,7 +129,7 @@ class MusicController extends Controller{
         }
         $music->save();
 
-        return redirect()->route('admin.music.show');
+        return Redirect::route('admin.music.show')->with('status','update')->with('music',$music);
     }
 
     /**
@@ -138,11 +139,12 @@ class MusicController extends Controller{
         $music = Music::where('id',$id)->first();
         if($music) {
             $image_path = $_SERVER['DOCUMENT_ROOT'].$music->thumbnail; 
+            $music_old = $music;
             if ($image_path!=null) {
                 File::delete($image_path);
             }
             $music->delete();
         }
-        return redirect()->route('admin.music.show');
+        return Redirect::route('admin.music.show')->with('status','destroy')->with('music',$music_old);
     }
 }

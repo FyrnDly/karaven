@@ -12,6 +12,22 @@
 @section('content')
 <main class="container">
     @include('include.navbar.navadmin')
+	@if (session('status') === 'create')
+	<div class="success-feedback" role="alert">
+		<p>Artist <b>{{ session('artist')->name }}</b> berhasil ditambahkan</p>
+	</div>
+	@endif
+	@if (session('status') === 'update')
+	<div class="success-feedback" role="alert">
+		<p>Artist <b>{{ session('artist')->name }}</b> berhasil diperbarui</p>
+	</div>
+	@endif
+	@if (session('status') === 'destroy')
+	<div class="invalid-feedback d-block" role="alert">
+		<p>Artist <b>{{ session('artist')->name; }}</b> berhasil dihapus</p>
+	</div>
+	@endif
+
     <div class="row justify-content-between gap-2 mt-4">
         <div class="col">
             <input type="text" id="filterInput" placeholder="Cari cepat..." class="filter">
