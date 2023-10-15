@@ -26,7 +26,7 @@
     </div>
     	@if($artists->count() < $artists->total())
         <div class="text-center mt-4">
-            <button class="btn btn-white" onclick="window.location.href='{{ url('/artist/show?per_page='.($artists->count()+8).'&page='.$artists->currentPage()) }}'">Tampilkan lebih banyak</button>
+            <button class="btn btn-white" onclick="window.location.href='{{ url('/artists?per_page='.($artists->count()+8).'&page='.$artists->currentPage()) }}'">Tampilkan lebih banyak</button>
         </div>
         @endif
     @else
