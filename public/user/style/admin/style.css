@@ -35,6 +35,14 @@ form.music label {
   font-size: 1.6rem;
   letter-spacing: 0.3px;
 }
+form.music .form-check-label {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #F7F7F7;
+  line-height: normal;
+  letter-spacing: 0.12px;
+}
 form.music input, form.music select, form.music option, form.music textarea, form.music .addon-form {
   margin-top: 5px;
   background-color: #383838 !important;

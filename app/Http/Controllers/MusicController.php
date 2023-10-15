@@ -59,12 +59,37 @@ class MusicController extends Controller{
 
         $music = new Music;
         $music->title = Str::title($request->input('title'));
-        $music->genre_id = $request->input('genre');
-        $music->artist_id = $request->input('artist');
         $music->source_music = $request->input('source');
-        $music->save();
 
+        $isGenre = Genre::where('id', $request->input('genre'))->first();
+        if ($isGenre) {
+            $music->genre_id = $request->input('genre');
+        } else {
+            $genre = new Genre;
+            $genre->name = $request->input('genre');
+            $genre->save();
+            
+            $genre->slug = Str::slug($genre->name,'-').'-'.$genre->id.$tgl;
+            $genre->save();
+            $music->genre_id = $genre->id;
+        }
+        
+        $isArtist = Artist::where('id', $request->input('artist'))->first();
+        if ($isArtist) {
+            $music->artist_id = $request->input('artist');
+        } else {
+            $artist = new Artist;
+            $artist->name = $request->input('artist');
+            $artist->save();
+
+            $artist->slug = Str::slug($artist->name,'-').'-'.$artist->id.$tgl;
+            $artist->save();
+            $music->artist_id = $artist->id;
+        }
+        
+        $music->save();
         $music->slug = Str::slug($music->title,'-').'-'.$music->id.$tgl;
+
         if ($request->file('thumbnail')!=null) {
             $thumbnail = $music->slug.'.'.$request->file('thumbnail')->getClientOriginalExtension();
             $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/music', $thumbnail);
@@ -137,9 +162,9 @@ class MusicController extends Controller{
      */
     public function destroy($id){
         $music = Music::where('id',$id)->first();
+        $music_old = $music;
         if($music) {
             $image_path = $_SERVER['DOCUMENT_ROOT'].$music->thumbnail; 
-            $music_old = $music;
             if ($image_path!=null) {
                 File::delete($image_path);
             }

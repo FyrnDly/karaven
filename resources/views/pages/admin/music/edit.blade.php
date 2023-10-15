@@ -43,12 +43,17 @@
 
         <div class="mb-3">
             <label for="genre" class="form-label">Genre Music</label>
-            <select class="form-select" id="genre" name="genre">
-                <option selected disabled>Pilih Genre Music</option>
+            <div class="row justify-content-start">
                 @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}" @selected($genre->id == $music->genre->id)>{{ $genre->name }}</option>
+                <div class="col-6 col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genre" id="{{ $genre->id }}" value="{{ $genre->id }}" @checked($genre->id == $music->genre->id)>
+                        <label class="form-check-label" for="{{ $genre->id }}">{{ $genre->name }}</label>
+                    </div>
+                </div>
                 @endforeach
-            </select>
+            </div>
+
             @error('genre')
             <small role="alert">Pastikan Genre Music Telah Dipilih</small>
             @enderror
@@ -56,12 +61,17 @@
 
         <div class="mb-3">
             <label for="artist" class="form-label">Penyanyi</label>
-            <select class="form-select" id="artist" name="artist">
-                <option selected disabled>Masukkan Nama Penyanyi / Band</option>
+            <div class="row justify-content-start">
                 @foreach ($artists as $artist)
-                <option value="{{ $artist->id }}" @selected($artist->id == $music->artist->id)>{{ $artist->name }}</option>
+                <div class="col-6 col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="artist" id="{{ $artist->id }}" value="{{ $artist->id }}" @checked($artist->id == $music->artist->id)>
+                        <label class="form-check-label" for="{{ $artist->id }}">{{ $artist->name }}</label>
+                    </div>
+                </div>
                 @endforeach
-            </select>
+            </div>
+
             @error('artist')
             <small role="alert">Pastikan Artist Music Telah Dipilih</small>
             @enderror
