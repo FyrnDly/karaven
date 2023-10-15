@@ -21,12 +21,26 @@ class MusicController extends Controller{
         if ($music == null){ return abort(404); }
         $music->log += 1;
         $music->save();
+        
         $embed = Embed::make($music->source_music)->parseUrl();
         if ($embed) {
             $music->source_music = $embed->getIframe();
         }
+
+        // Membuat rekomendasi music berdasarkan artist yang sama
+        $artist_rec = Music::search($music->artist->name)->get();
+        $id_ar = $artist_rec->pluck('id')->toArray();
+        $musics_ar = Music::whereIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->get();
+        
+        // Membuat rekomendasi music berdasarkan genre yang sama
+        $genre_rec = Music::search($music->genre->name)->get();
+        $id_gr = $genre_rec->pluck('id')->toArray();
+        $musics_gr = Music::whereIn('id',$id_gr)->whereNotIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->get();
+
         return view('pages.play',[
-            'music'=>$music
+            'music'=>$music,
+            'mr1'=>$musics_ar,
+            'mr2'=>$musics_gr
         ]);
     }
 
