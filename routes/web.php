@@ -38,9 +38,10 @@ Route::prefix('artists')->name('artist.')->group(function(){
     Route::get('/{slug}',[ArtistController::class,'index'])->name('detail');
 });
 
-// Route::prefix('playlist')->name('playlist.')->group(function(){
-//     Route::get('/show', [AppController::class, 'playlist'])->name('index');
-// });
+Route::prefix('playlists')->name('playlist.')->group(function(){
+    Route::get('/', [AppController::class, 'playlist'])->name('index');
+    Route::get('/{slug}',[PlaylistController::class,'index'])->name('detail');
+});
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin'])->group(function(){
     Route::get('/',[AdminController::class,'index'])->name('index');
@@ -62,9 +63,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
         Route::post('/delete/{id}',[GenreController::class,'destroy'])->name('delete');
     });
     
-    // Route::prefix('playist')->group(function(){
-    //     Route::get('/',[PlaylistController::class,'create'])->name('playlist');
-    // });
+    Route::prefix('playlist')->name('playlist.')->group(function(){
+        Route::get('/', [PlaylistController::class,'show'])->name('show');
+        Route::get('/create',[PlaylistController::class,'create'])->name('create');
+        Route::post('/store',[PlaylistController::class,'store'])->name('store');
+        Route::get('/edit/{slug}',[PlaylistController::class,'edit'])->name('edit');
+        Route::post('/update/{slug}',[PlaylistController::class,'update'])->name('update');
+        Route::get('/music/{slug}',[PlaylistController::class,'music'])->name('music');
+        Route::post('/music/add/{slug}',[PlaylistController::class,'addmusic'])->name('music.add');
+        Route::post('/music/remove/{slug}/{id}',[PlaylistController::class,'removemusic'])->name('music.remove');
+        Route::post('/delete/{id}',[PlaylistController::class,'destroy'])->name('delete');
+    });
     
     Route::prefix('music')->name('music.')->group(function(){
         Route::get('/', [MusicController::class,'show'])->name('show');

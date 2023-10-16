@@ -90,7 +90,7 @@
 		        @endforeach
 		        @else
 		        <tr>
-		            <td colspan="4" class="text-center">
+		            <td colspan="3" class="text-center">
 		                <a href="{{ route('admin.artist.create') }}" class="btn btn-primary">Tambahkan Penyanyi Baru</a>
 		            </td>
 		        </tr>

@@ -36,8 +36,10 @@ class AppController extends Controller{
     }
 
     public function playlist(){
+        $playlists = Playlist::orderBy('name','asc')->get();
         return view('pages.playlist.index',[
-            'isPlaylist'=>true
+            'isPlaylist'=>true,
+            'playlists'=>$playlists
         ]);
     }
 

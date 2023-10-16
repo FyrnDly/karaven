@@ -30,12 +30,12 @@ class MusicController extends Controller{
         // Membuat rekomendasi music berdasarkan artist yang sama
         $artist_rec = Music::search($music->artist->name)->get();
         $id_ar = $artist_rec->pluck('id')->toArray();
-        $musics_ar = Music::whereIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->get();
+        $musics_ar = Music::whereIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->limit(3)->get();
         
         // Membuat rekomendasi music berdasarkan genre yang sama
         $genre_rec = Music::search($music->genre->name)->get();
         $id_gr = $genre_rec->pluck('id')->toArray();
-        $musics_gr = Music::whereIn('id',$id_gr)->whereNotIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->get();
+        $musics_gr = Music::whereIn('id',$id_gr)->whereNotIn('id',$id_ar)->whereNot('id',$music->id)->orderBy('log','desc')->orderBy('title','asc')->limit(3)->get();
 
         return view('pages.play',[
             'music'=>$music,
@@ -50,10 +50,12 @@ class MusicController extends Controller{
     public function create(){
         $genres = Genre::orderBy('name','asc')->get();
         $artists = Artist::orderBy('name','asc')->get();
+        $playlists = Playlist::orderBy('name','asc')->get();
 
         return view('pages.admin.music.create',[
             'genres'=>$genres,
             'artists'=>$artists,
+            'playlists'=>$playlists,
             'isMusic'=>true
         ]);
     }
@@ -111,6 +113,7 @@ class MusicController extends Controller{
         }
 
         $music->save();
+        $music->playlists()->sync(array_values($request->input('playlists')));
         return Redirect::route('admin.music.show')->with('status','create')->with('music',$music);
     }
 
@@ -133,10 +136,12 @@ class MusicController extends Controller{
         $music = Music::where('slug',$slug)->first();
         $genre = Genre::orderBy('name','asc')->get();
         $artist = Artist::orderBy('name','asc')->get();
+        $playlists = Playlist::orderBy('name','asc')->get();
         return view('pages.admin.music.edit',[
             'music'=>$music,
             'genres'=>$genre,
             'artists'=>$artist,
+            'playlists'=>$playlists,
             'isMusic'=>true
         ]);
     }
@@ -166,8 +171,9 @@ class MusicController extends Controller{
             $path = $request->file('thumbnail')->move($_SERVER['DOCUMENT_ROOT'].'/music', $thumbnail);
             $music->thumbnail = '/music/'.$thumbnail;
         }
-        $music->save();
 
+        $music->save();
+        $music->playlists()->sync(array_values($request->input('playlists')));
         return Redirect::route('admin.music.show')->with('status','update')->with('music',$music);
     }
 

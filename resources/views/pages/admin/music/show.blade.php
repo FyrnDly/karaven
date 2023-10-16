@@ -36,6 +36,7 @@
             <a href="{{ route('admin.music.create') }}" class="btn btn-primary">Tambah Lagu Baru</a>
         </div>
     </div>
+    
     <div class="table-responsive">
         <table class="table table-striped table-dark table-hover table-borderless">
 		    <thead>
@@ -88,7 +89,7 @@
 		        @endforeach
 		        @else
 		        <tr>
-		            <td colspan="4" class="text-center">
+		            <td colspan="5" class="text-center">
 		                <a href="{{ route('admin.music.create') }}" class="btn btn-primary">Tambahkan Lagu Baru</a>
 		            </td>
 		        </tr>

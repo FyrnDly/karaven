@@ -89,6 +89,33 @@
         </div>
 
         <div class="mb-3">
+            <label for="artist" class="form-label">Playlist</label>
+            <div class="row justify-content-start">
+                @foreach ($playlists as $playlist)
+                @php
+                $check = false;
+                foreach ($music->playlists as $pk) {
+				    if ($playlist->id == $pk->id) {
+						$check = true;
+						break;
+				    }
+                }
+                @endphp
+                <div class="col-6 col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="playlists[]" id="{{ $playlist->id }}" value="{{ $playlist->id }}" @checked($check)>
+                        <label class="form-check-label" for="{{ $playlist->id }}">{{ $playlist->name }}</label>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            @error('playlists')
+            <small role="alert">Pastikan Playlist Lagu Telah Dipilih</small>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">SIMPAN</button>
         </div>
     </form>
