@@ -29,7 +29,7 @@
     <div class="d-flex flex-column justify-content-center gap-2 my-4 mx-2">
         <img src="{{ url('user/assets/icon/error.svg') }}" alt="Error" class="w-50 mx-auto">
         <span class="text-center">
-            <h2><b>Genre Belum Ditambahkan</b> oleh Admin</h2>
+            <h2><b>Playlist Belum Ditambahkan</b> oleh Admin</h2>
             <b>Silahkan Hubungi Admin</b>
         </span>
     </div>
