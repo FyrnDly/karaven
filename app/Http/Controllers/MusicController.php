@@ -113,7 +113,9 @@ class MusicController extends Controller{
         }
 
         $music->save();
-        $music->playlists()->sync(array_values($request->input('playlists')));
+        if ($request->input('playlists')) {
+            $music->playlists()->sync(array_values($request->input('playlists')));
+        }
         return Redirect::route('admin.music.show')->with('status','create')->with('music',$music);
     }
 
@@ -173,7 +175,9 @@ class MusicController extends Controller{
         }
 
         $music->save();
-        $music->playlists()->sync(array_values($request->input('playlists')));
+        if ($request->input('playlists')) {
+            $music->playlists()->sync(array_values($request->input('playlists')));
+        }
         return Redirect::route('admin.music.show')->with('status','update')->with('music',$music);
     }
 
