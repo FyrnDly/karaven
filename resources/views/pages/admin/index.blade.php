@@ -13,23 +13,9 @@
 <main class="container">
     @include('include.navbar.navadmin')
     <div class="my-4 row justify-content-between aligin-items-start">
-        <div class="col-md-4 p-2">
-            <a href="{{ route('admin.music.show') }}" class="card text-center p-2">
-                <h4>Jumlah Lagu</h4>
-                <h2 class="m-0">{{ $musics->count() }}</h2>
-            </a>
-        </div>
-        <div class="col-md-4 p-2">
-            <a href="{{ route('admin.genre.show') }}" class="card text-center p-2">
-                <h4>Genre</h4>
-                <h2 class="m-0">{{ $genres->count() }}</h2>
-            </a>
-        </div>
-        <div class="col-md-4 p-2">
-            <a href="{{ route('admin.artist.show') }}" class="card text-center p-2">
-                <h4>Jumlah Penyanyi</h4>
-                <h2 class="m-0">{{ $artists->count() }}</h2>
-            </a>
+        <div class="col-12 p-2">
+            <div id="chart-container" data-bs-lagu="{{ $musics->count() }}" data-bs-genre="{{ $genres->count() }}" data-bs-artist="{{ $artists->count() }}"></div>
+
         </div>
     </div>
     <h2>Lagu Paling <b>Sering Diputar</b></h2>
@@ -142,3 +128,57 @@
 </main>
 @endsection
 
+@push('add-script')
+<!-- Include the fusioncharts core library -->
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<!-- Include the fusion theme -->
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+<!-- Create Chart #chart-container -->
+<script>
+    // Get Value
+    const chart = document.getElementById('chart-container');
+    const lagu = chart.getAttribute('data-bs-lagu');
+    const genre = chart.getAttribute('data-bs-genre');
+    const artist = chart.getAttribute('data-bs-artist');
+
+
+    // Data Chart
+    const chartData = [{
+    "label": "Jumlah Lagu"
+    , "value": lagu
+    }, {
+    "label": "Genre"
+    , "value": genre
+    }, {
+    "label": "Jumlah Penyanyi"
+    , "value": artist
+    }];
+
+    // Chart Configurations
+    const chartConfig = {
+    type: 'pie2d'
+    , renderAt: 'chart-container'
+    , width: '100%'
+    , height: '400'
+    , dataFormat: 'json'
+    , dataSource: {
+    // Chart Configuration
+    "chart": {
+    "caption": "Summary Website KaraVen"
+    , "xAxisName": "Jenis"
+    , "yAxisName": "Banyak"
+    , "numberSuffix": " Item"
+    , "theme": "fusion"
+    , },
+    // Chart Data
+    "data": chartData
+    }
+    };
+    // Render
+    FusionCharts.ready(function() {
+    var fusioncharts = new FusionCharts(chartConfig);
+    fusioncharts.render();
+    });
+
+    </script>
+    @endpush
